@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>ShikshaSetu v2.0 — FLN Video Studio</title>
+<title>ShikshaSetu — Dashboard</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Ol+Chiki:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -12,218 +12,182 @@
   --bg: #F4F7F5;
   --sidebar-bg: #FFFFFF;
   --card-bg: #FFFFFF;
-  --card-border: #E2ECE8;
+  --card-border: #E5ECE8;
   --forest-green: #134E3F;
-  --forest-green-hover: #0F3E33;
-  --forest-green-light: #EBF4F0;
+  --forest-green-hover: #0E3F33;
   --saffron: #EA580C;
-  --saffron-light: #FFF7ED;
   --mint: #E6F4EA;
-  --mint-dark: #0D6832;
-  --text-primary: #111827;
-  --text-secondary: #4B5563;
+  --mint-dark: #134E3F;
+  --text-main: #111827;
   --text-muted: #6B7280;
-  --accent-blue: #0284C7;
-  --shadow-sm: 0 2px 8px rgba(19, 78, 63, 0.04);
-  --shadow-md: 0 10px 30px rgba(19, 78, 63, 0.06);
-  --shadow-lg: 0 20px 40px rgba(19, 78, 63, 0.10);
-  --radius-sm: 10px;
-  --radius-md: 16px;
-  --radius-lg: 22px;
+  --text-subtle: #9CA3AF;
+  --radius-card: 20px;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body {
   font-family: 'Plus Jakarta Sans', 'Inter', 'Noto Sans Ol Chiki', -apple-system, sans-serif;
   background: var(--bg);
-  color: var(--text-primary);
+  color: var(--text-main);
   min-height: 100vh;
   display: flex;
 }
 
-/* ── Sidebar Layout ─────────────────────────────────────────── */
+/* ── Sidebar ─────────────────────────────────────────────────── */
 .sidebar {
-  width: 260px;
+  width: 240px;
   background: var(--sidebar-bg);
   border-right: 1px solid var(--card-border);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 24px 20px;
+  padding: 24px 18px;
+  height: 100vh;
   position: sticky;
   top: 0;
-  height: 100vh;
   flex-shrink: 0;
 }
 
-.brand-row {
+.logo-row {
   display: flex;
   align-items: center;
-  gap: 12px;
-  text-decoration: none;
-  margin-bottom: 28px;
+  gap: 10px;
+  margin-bottom: 32px;
 }
 
-.brand-icon {
-  width: 42px;
-  height: 42px;
+.logo-icon {
+  width: 38px;
+  height: 38px;
   background: linear-gradient(135deg, #F97316 0%, #EA580C 100%);
   border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 14px rgba(234, 88, 12, 0.35);
   color: #fff;
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 800;
-  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(234, 88, 12, 0.3);
 }
 
-.brand-text h1 {
+.logo-title {
   font-size: 19px;
   font-weight: 800;
-  color: var(--text-primary);
+  color: var(--text-main);
   letter-spacing: -0.02em;
-  display: flex;
-  align-items: center;
-  gap: 6px;
 }
 
-.brand-text h1 span {
-  font-size: 11px;
-  font-weight: 700;
-  background: var(--saffron-light);
-  color: var(--saffron);
-  border: 1px solid rgba(234, 88, 12, 0.25);
-  padding: 1px 6px;
-  border-radius: 6px;
-}
-
-.brand-text p {
-  font-size: 10.5px;
-  color: var(--text-muted);
-  line-height: 1.3;
-  margin-top: 1px;
-}
-
-.nav-section-title {
+.menu-label {
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.08em;
-  color: var(--text-muted);
+  color: var(--text-subtle);
   text-transform: uppercase;
-  margin: 18px 0 10px 10px;
+  margin: 18px 0 10px 8px;
 }
 
-.nav-menu {
+.nav-links {
   display: flex;
   flex-direction: column;
   gap: 4px;
 }
 
-.nav-item {
+.nav-link {
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 11px 14px;
-  border-radius: 12px;
+  padding: 11px 16px;
+  border-radius: 999px;
   font-size: 13.5px;
   font-weight: 600;
-  color: var(--text-secondary);
+  color: var(--text-muted);
   text-decoration: none;
   cursor: pointer;
-  transition: all 0.2s ease;
-  border: 1px solid transparent;
+  transition: all 0.15s ease;
 }
 
-.nav-item:hover {
-  background: var(--forest-green-light);
+.nav-link:hover {
   color: var(--forest-green);
+  background: #F0F6F3;
 }
 
-.nav-item.active {
+.nav-link.active {
   background: var(--forest-green);
   color: #FFFFFF;
-  box-shadow: 0 4px 16px rgba(19, 78, 63, 0.25);
+  box-shadow: 0 4px 14px rgba(19, 78, 63, 0.25);
 }
 
-.nav-item .icon {
-  font-size: 17px;
+.nav-link .icon {
+  font-size: 16px;
   display: flex;
   align-items: center;
-  justify-content: center;
 }
 
-/* Sidebar General controls */
-.sidebar-general {
+/* General Dropdowns */
+.general-selects {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  margin-top: 12px;
+  margin-top: 8px;
 }
 
-.sidebar-select {
+.general-select {
   width: 100%;
-  background: #F8FAFC;
+  background: #FFFFFF;
   border: 1px solid var(--card-border);
   border-radius: 10px;
   padding: 9px 12px;
-  font-size: 12.5px;
+  font-size: 13px;
   font-weight: 500;
-  color: var(--text-secondary);
+  color: var(--text-main);
   font-family: inherit;
   cursor: pointer;
   outline: none;
 }
 
-.sidebar-select:focus {
-  border-color: var(--forest-green);
-}
-
-/* Sidebar Profile */
-.profile-card {
+/* Teacher Profile */
+.profile-box {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 12px;
+  padding: 12px 14px;
   border-radius: 14px;
   background: #F8FAF9;
   border: 1px solid var(--card-border);
-  margin-top: 20px;
+  margin-top: 24px;
 }
 
-.profile-info {
+.profile-user {
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
 .profile-avatar {
-  width: 36px;
-  height: 36px;
+  width: 34px;
+  height: 34px;
   border-radius: 50%;
   background: var(--forest-green);
-  color: #fff;
+  color: #FFFFFF;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 700;
 }
 
-.profile-names h4 {
+.profile-meta h4 {
   font-size: 13px;
   font-weight: 700;
-  color: var(--text-primary);
+  color: var(--text-main);
 }
 
-.profile-names p {
+.profile-meta p {
   font-size: 11px;
   color: var(--text-muted);
 }
 
-/* ── Main Content Area ──────────────────────────────────────── */
-.main-wrapper {
+/* ── Main Layout ─────────────────────────────────────────────── */
+.main-content {
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -231,80 +195,75 @@ body {
   min-height: 100vh;
 }
 
-/* Top App Bar */
-.top-bar {
+/* Top Navigation Bar */
+.top-nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 18px 40px;
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--card-border);
-  position: sticky;
-  top: 0;
-  z-index: 50;
+  padding: 18px 36px;
+  background: transparent;
 }
 
-.search-box {
+.search-bar {
   display: flex;
   align-items: center;
   gap: 10px;
   background: #FFFFFF;
   border: 1px solid var(--card-border);
   border-radius: 999px;
-  padding: 8px 18px;
+  padding: 9px 18px;
   width: 340px;
-  box-shadow: var(--shadow-sm);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
 }
 
-.search-box input {
+.search-bar input {
   border: none;
   outline: none;
   background: transparent;
   font-size: 13px;
   width: 100%;
-  color: var(--text-primary);
+  color: var(--text-main);
   font-family: inherit;
 }
 
-.search-box input::placeholder {
-  color: var(--text-muted);
+.search-bar input::placeholder {
+  color: var(--text-subtle);
 }
 
-.search-box .key-badge {
+.search-badge {
   font-size: 11px;
-  color: var(--text-muted);
+  color: var(--text-subtle);
   background: #F1F5F9;
-  padding: 2px 7px;
+  padding: 2px 6px;
   border-radius: 6px;
   font-weight: 600;
   border: 1px solid #E2E8F0;
 }
 
-.top-actions {
+.nav-right {
   display: flex;
   align-items: center;
   gap: 12px;
 }
 
-.lang-pill {
-  display: inline-flex;
+.lang-indicator {
+  display: flex;
   align-items: center;
   gap: 6px;
+  font-size: 12.5px;
+  color: var(--text-muted);
+  font-weight: 600;
   background: #FFFFFF;
   border: 1px solid var(--card-border);
   padding: 6px 14px;
   border-radius: 999px;
-  font-size: 12.5px;
-  font-weight: 600;
-  color: var(--text-secondary);
 }
 
-.btn-sync {
-  background: #FFFFFF;
-  border: 1px solid var(--card-border);
-  color: var(--text-secondary);
-  padding: 8px 16px;
+.btn-new-lesson {
+  background: var(--forest-green);
+  color: #FFFFFF;
+  border: none;
+  padding: 9px 20px;
   border-radius: 999px;
   font-size: 13px;
   font-weight: 600;
@@ -312,19 +271,19 @@ body {
   display: flex;
   align-items: center;
   gap: 6px;
-  transition: all 0.2s;
-  box-shadow: var(--shadow-sm);
+  box-shadow: 0 4px 14px rgba(19, 78, 63, 0.2);
+  transition: all 0.2s ease;
 }
 
-.btn-sync:hover {
-  background: #F8FAFC;
-  border-color: #CBD5E1;
+.btn-new-lesson:hover {
+  background: var(--forest-green-hover);
+  transform: translateY(-1px);
 }
 
-.btn-new {
-  background: var(--forest-green);
-  color: #FFFFFF;
-  border: none;
+.btn-sync-clean {
+  background: #FFFFFF;
+  border: 1px solid var(--card-border);
+  color: var(--text-main);
   padding: 8px 18px;
   border-radius: 999px;
   font-size: 13px;
@@ -333,958 +292,590 @@ body {
   display: flex;
   align-items: center;
   gap: 6px;
-  box-shadow: 0 4px 14px rgba(19, 78, 63, 0.25);
-  transition: all 0.2s;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
 }
 
-.btn-new:hover {
-  background: var(--forest-green-hover);
-  transform: translateY(-1px);
+.btn-sync-clean:hover {
+  background: #F8FAF9;
 }
 
-/* Main Container */
-.content-body {
-  max-width: 1100px;
-  width: 100%;
-  margin: 0 auto;
-  padding: 32px 40px 60px 40px;
+/* Dashboard Body */
+.dashboard-body {
+  padding: 8px 36px 40px 36px;
 }
 
-/* Page Header */
-.page-header {
+.dash-header {
   margin-bottom: 24px;
 }
 
-.page-header h2 {
+.dash-header h2 {
   font-size: 28px;
   font-weight: 800;
-  color: var(--text-primary);
+  color: var(--text-main);
   letter-spacing: -0.02em;
 }
 
-.page-header p {
+.dash-header p {
   font-size: 14px;
   color: var(--text-muted);
   margin-top: 4px;
 }
 
-/* ── Stat Cards Grid (ShikshaSetu Spec) ────────────────────────── */
-.stats-grid {
+/* ── 4 Top Stat Cards ────────────────────────────────────────── */
+.stats-row {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 16px;
-  margin-bottom: 30px;
+  margin-bottom: 24px;
 }
 
-.stat-card {
+.stat-item {
   background: var(--card-bg);
   border: 1px solid var(--card-border);
-  border-radius: var(--radius-md);
-  padding: 20px 22px;
+  border-radius: var(--radius-card);
+  padding: 22px 24px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  box-shadow: var(--shadow-sm);
-  position: relative;
-  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+  transition: transform 0.2s;
 }
 
-.stat-card:hover {
+.stat-item:hover {
   transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
 }
 
-.stat-card.featured {
+.stat-item.active-green {
   background: var(--forest-green);
-  color: #FFFFFF;
   border-color: var(--forest-green);
-  box-shadow: 0 8px 24px rgba(19, 78, 63, 0.28);
+  color: #FFFFFF;
+  box-shadow: 0 8px 24px rgba(19, 78, 63, 0.25);
 }
 
-.stat-top {
+.stat-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.stat-label {
+.stat-name {
   font-size: 13.5px;
   font-weight: 600;
   color: var(--text-muted);
 }
 
-.stat-card.featured .stat-label {
+.stat-item.active-green .stat-name {
   color: rgba(255, 255, 255, 0.85);
 }
 
-.stat-arrow {
+.stat-icon-btn {
   width: 28px;
   height: 28px;
   border-radius: 50%;
   background: #F1F5F9;
-  color: var(--text-secondary);
+  color: var(--text-muted);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 700;
 }
 
-.stat-card.featured .stat-arrow {
+.stat-item.active-green .stat-icon-btn {
   background: #FFFFFF;
   color: var(--forest-green);
 }
 
-.stat-number {
-  font-size: 38px;
+.stat-val {
+  font-size: 40px;
   font-weight: 800;
   letter-spacing: -0.03em;
   margin: 12px 0 10px;
-  color: var(--text-primary);
+  color: var(--text-main);
 }
 
-.stat-card.featured .stat-number {
+.stat-item.active-green .stat-val {
   color: #FFFFFF;
 }
 
-.stat-pill {
-  font-size: 11.5px;
+.stat-tag {
+  font-size: 11px;
   font-weight: 700;
   padding: 4px 12px;
   border-radius: 999px;
   width: fit-content;
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
 }
 
-.pill-green {
-  background: var(--mint);
-  color: var(--mint-dark);
-}
-
-.pill-amber {
-  background: #FEF3C7;
-  color: #B45309;
-}
-
-.pill-blue {
-  background: #E0F2FE;
-  color: #0369A1;
-}
-
-.stat-card.featured .stat-pill {
+.stat-item.active-green .stat-tag {
   background: rgba(255, 255, 255, 0.18);
   color: #FFFFFF;
-  border: 1px solid rgba(255, 255, 255, 0.25);
 }
 
-/* ── Main Studio Card ────────────────────────────────────────── */
-.studio-card {
-  background: var(--card-bg);
-  border: 1px solid var(--card-border);
-  border-radius: var(--radius-lg);
-  padding: 32px;
-  box-shadow: var(--shadow-md);
-  margin-bottom: 30px;
-}
+.tag-green { background: #DCFCE7; color: #166534; }
+.tag-blue { background: #E0F2FE; color: #075985; }
+.tag-amber { background: #FEF3C7; color: #92400E; }
 
-/* Educator Avatar Hero Banner inside Studio */
-.educator-banner {
-  background: linear-gradient(135deg, #F8FAF9 0%, #EFF6F3 100%);
-  border: 1px solid var(--card-border);
-  border-radius: var(--radius-md);
-  padding: 18px 24px;
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  margin-bottom: 26px;
-}
-
-.avatar-svg {
-  width: 72px;
-  height: 84px;
-  flex-shrink: 0;
-}
-
-.educator-info h3 {
-  font-size: 16px;
-  font-weight: 700;
-  color: var(--forest-green);
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.educator-info p {
-  font-size: 13px;
-  color: var(--text-secondary);
-  margin-top: 3px;
-  line-height: 1.5;
-}
-
-.engine-badges {
-  display: flex;
-  gap: 8px;
-  margin-top: 8px;
-  flex-wrap: wrap;
-}
-
-.engine-tag {
-  font-size: 11px;
-  font-weight: 600;
-  padding: 2px 10px;
-  border-radius: 999px;
-  border: 1px solid;
-}
-
-.eng-el {
-  background: var(--saffron-light);
-  border-color: rgba(234, 88, 12, 0.3);
-  color: var(--saffron);
-}
-
-.eng-free {
-  background: var(--mint);
-  border-color: rgba(16, 185, 129, 0.3);
-  color: var(--mint-dark);
-}
-
-.eng-did {
-  background: #F1F5F9;
-  border-color: #CBD5E1;
-  color: var(--text-muted);
-}
-
-/* Tabs */
-.tabs {
-  display: flex;
-  gap: 6px;
-  background: #F1F5F3;
-  border-radius: 14px;
-  padding: 5px;
+/* ── Middle Row: NIPUN Progress & TODAY ──────────────────────── */
+.middle-row {
+  display: grid;
+  grid-template-columns: 1.85fr 1fr;
+  gap: 16px;
   margin-bottom: 24px;
 }
 
-.tab {
-  flex: 1;
-  padding: 10px 14px;
-  border: none;
-  background: transparent;
-  color: var(--text-secondary);
-  border-radius: 10px;
-  cursor: pointer;
-  font-size: 13.5px;
-  font-weight: 600;
-  font-family: inherit;
-  transition: all 0.2s;
+.dash-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-card);
+  padding: 24px 28px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+}
+
+/* NIPUN Bar Chart */
+.chart-header {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  gap: 6px;
+  margin-bottom: 20px;
 }
 
-.tab.active {
-  background: #FFFFFF;
-  color: var(--forest-green);
-  box-shadow: var(--shadow-sm);
-}
-
-.panel { display: none; }
-.panel.active { display: block; }
-
-/* Dropzone */
-.dropzone {
-  border: 2px dashed #CBD5E1;
-  border-radius: var(--radius-md);
-  padding: 44px 20px;
-  text-align: center;
-  cursor: pointer;
-  transition: all 0.25s;
-  background: #FAFCFB;
-  position: relative;
-}
-
-.dropzone:hover {
-  border-color: var(--forest-green);
-  background: var(--forest-green-light);
-}
-
-.dropzone input {
-  position: absolute;
-  inset: 0;
-  opacity: 0;
-  cursor: pointer;
-  width: 100%;
-  height: 100%;
-}
-
-.dropzone .icon {
-  font-size: 42px;
-  margin-bottom: 12px;
-}
-
-.dropzone h3 {
+.chart-title {
   font-size: 16px;
-  font-weight: 700;
-  color: var(--text-primary);
-  margin-bottom: 4px;
+  font-weight: 800;
+  color: var(--text-main);
 }
 
-.dropzone p {
-  color: var(--text-muted);
-  font-size: 13px;
-}
-
-/* Selected File Pill */
-.file-sel {
-  background: var(--forest-green-light);
-  border: 1px solid rgba(19, 78, 63, 0.25);
-  border-radius: 12px;
-  padding: 12px 16px;
-  margin-top: 14px;
-  display: none;
-  align-items: center;
-  gap: 12px;
-}
-
-.file-sel.show { display: flex; }
-.file-sel .fname { flex: 1; font-size: 14px; font-weight: 600; color: var(--forest-green); }
-.rm {
-  background: #FEE2E2;
-  border: none;
-  color: #DC2626;
-  border-radius: 8px;
-  padding: 4px 10px;
-  cursor: pointer;
-  font-size: 12px;
-  font-weight: 700;
-}
-
-/* Textarea input */
-textarea {
-  width: 100%;
-  height: 150px;
-  background: #FFFFFF;
-  border: 1.5px solid var(--card-border);
-  border-radius: var(--radius-md);
-  color: var(--text-primary);
-  padding: 16px;
-  font-size: 14px;
-  font-family: inherit;
-  resize: vertical;
-  outline: none;
-  transition: border-color 0.2s, box-shadow 0.2s;
-}
-
-textarea:focus {
-  border-color: var(--forest-green);
-  box-shadow: 0 0 0 3px rgba(19, 78, 63, 0.12);
-}
-
-textarea::placeholder {
-  color: var(--text-muted);
-}
-
-/* Quick Topic Pills */
-.quick-topics {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  flex-wrap: wrap;
-  margin: 10px 0 16px;
-}
-
-.topic-chip {
-  font-size: 12px;
-  font-weight: 600;
-  padding: 5px 12px;
-  border-radius: 999px;
-  background: #F1F5F3;
-  color: var(--forest-green);
-  border: 1px solid var(--card-border);
-  cursor: pointer;
-  transition: all 0.15s;
-}
-
-.topic-chip:hover {
-  background: var(--forest-green-light);
-  border-color: var(--forest-green);
-}
-
-/* Language Selection Row */
-.lang-row {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  margin: 16px 0 14px;
-  padding: 14px 18px;
-  background: #F8FAF9;
-  border: 1px solid var(--card-border);
-  border-radius: var(--radius-md);
-}
-
-.lang-label {
-  font-size: 13.5px;
-  color: var(--forest-green);
-  font-weight: 700;
-  white-space: nowrap;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.lang-select {
-  flex: 1;
-  background: #FFFFFF;
-  color: var(--text-primary);
-  border: 1px solid var(--card-border);
-  border-radius: 10px;
-  padding: 10px 14px;
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  outline: none;
-  font-family: 'Plus Jakarta Sans', 'Noto Sans Ol Chiki', inherit;
-  transition: border-color 0.2s;
-}
-
-.lang-select:focus {
-  border-color: var(--forest-green);
-  box-shadow: 0 0 0 3px rgba(19, 78, 63, 0.12);
-}
-
-/* Action Buttons Grid */
-.action-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1.4fr;
-  gap: 12px;
-  margin-top: 18px;
-}
-
-.btn-outline {
-  background: #FFFFFF;
-  border: 1.5px solid var(--card-border);
-  color: var(--forest-green);
-  font-size: 13.5px;
-  font-weight: 700;
-  padding: 13px;
-  border-radius: 12px;
-  cursor: pointer;
-  transition: all 0.2s;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  font-family: inherit;
-}
-
-.btn-outline:hover:not(:disabled) {
-  background: var(--forest-green-light);
-  border-color: var(--forest-green);
-}
-
-.btn-outline:disabled {
-  opacity: 0.45;
-  cursor: not-allowed;
-}
-
-.btn-primary {
-  width: 100%;
-  padding: 13px 20px;
-  border: none;
-  background: var(--forest-green);
-  color: #FFFFFF;
-  border-radius: 12px;
-  font-size: 15px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all 0.2s;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  box-shadow: 0 4px 16px rgba(19, 78, 63, 0.28);
-  font-family: inherit;
-}
-
-.btn-primary:hover:not(:disabled) {
-  background: var(--forest-green-hover);
-  transform: translateY(-1px);
-  box-shadow: 0 8px 22px rgba(19, 78, 63, 0.35);
-}
-
-.btn-primary:disabled {
-  background: #CBD5E1;
-  box-shadow: none;
-  cursor: not-allowed;
-}
-
-/* ── Progress Card ───────────────────────────────────────────── */
-.prog-card {
-  background: #FAFCFB;
-  border: 1.5px solid var(--card-border);
-  border-radius: var(--radius-md);
-  padding: 24px;
-  margin-top: 24px;
-  display: none;
-}
-
-.prog-card.show { display: block; }
-
-.steps {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  margin-bottom: 18px;
-}
-
-.step {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 11px 16px;
-  border-radius: 10px;
-  background: #FFFFFF;
-  border: 1px solid #E2E8F0;
-}
-
-.step.done {
-  background: var(--mint);
-  border-color: rgba(16, 185, 129, 0.3);
-}
-
-.step.active {
-  background: var(--forest-green-light);
-  border-color: var(--forest-green);
-}
-
-.step.wait {
-  opacity: 0.45;
-}
-
-.step-icon { font-size: 18px; width: 26px; }
-.step-text { flex: 1; font-size: 13.5px; font-weight: 600; }
-.step-badge {
-  font-size: 11px;
+.chart-pct {
+  background: #DCFCE7;
+  color: #166534;
+  font-size: 11.5px;
   font-weight: 700;
   padding: 3px 10px;
   border-radius: 999px;
 }
 
-.step.done .step-badge { background: #DCFCE7; color: var(--mint-dark); }
-.step.active .step-badge { background: var(--forest-green); color: #FFFFFF; }
-.step.wait .step-badge { background: #E2E8F0; color: var(--text-muted); }
-
-.pb-wrap {
-  height: 8px;
-  background: #E2ECE8;
-  border-radius: 999px;
-  overflow: hidden;
-}
-
-.pb {
-  height: 100%;
-  background: linear-gradient(90deg, var(--forest-green) 0%, #10B981 100%);
-  border-radius: 999px;
-  width: 0%;
-  transition: width 0.4s ease;
-}
-
-.prog-label {
-  text-align: center;
-  margin-top: 12px;
-  color: var(--forest-green);
-  font-size: 13px;
-  font-weight: 700;
-}
-
-/* Live Terminal Output */
-#llmLogs {
-  display: none;
-  font-family: 'JetBrains Mono', 'Courier New', monospace;
-  font-size: 12.5px;
-  background: #0B1713;
-  color: #34D399;
-  padding: 14px;
-  border-radius: 10px;
-  margin-top: 16px;
-  text-align: left;
-  max-height: 150px;
-  overflow-y: auto;
-  border: 1px solid rgba(52, 211, 153, 0.2);
-}
-
-/* ── Result Card ─────────────────────────────────────────────── */
-.result {
-  background: #F0FDF4;
-  border: 1.5px solid #86EFAC;
-  border-radius: var(--radius-md);
-  padding: 26px;
-  margin-top: 24px;
-  display: none;
-}
-
-.result.show { display: block; }
-.result h3 {
-  color: var(--forest-green);
-  margin-bottom: 16px;
-  font-size: 18px;
-  font-weight: 800;
+.chart-area {
   display: flex;
+  gap: 16px;
+  align-items: flex-end;
+  height: 190px;
+  padding-bottom: 10px;
+}
+
+.y-axis {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  font-size: 11px;
+  color: var(--text-subtle);
+  padding-right: 8px;
+}
+
+.bars-container {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  height: 100%;
+}
+
+.bar-col {
+  display: flex;
+  flex-direction: column;
   align-items: center;
   gap: 8px;
+  height: 100%;
+  justify-content: flex-end;
+  flex: 1;
 }
 
-.meta-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
-  margin-bottom: 20px;
+.bar-rect {
+  width: 46px;
+  background: var(--forest-green);
+  border-radius: 12px;
+  transition: height 0.4s ease;
 }
 
-.meta-item {
-  background: #FFFFFF;
-  border: 1px solid #DCFCE7;
-  border-radius: 10px;
-  padding: 10px 14px;
-}
-
-.meta-item label {
-  font-size: 10px;
+.bar-label {
+  font-size: 11.5px;
   color: var(--text-muted);
-  display: block;
-  margin-bottom: 2px;
+  font-weight: 600;
+}
+
+/* TODAY Card */
+.today-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.today-caption {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: var(--text-subtle);
   text-transform: uppercase;
-  font-weight: 700;
+  margin-bottom: 12px;
 }
 
-.meta-item span {
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--text-primary);
+.today-heading {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--forest-green);
+  line-height: 1.3;
+  margin-bottom: 8px;
 }
 
-.watch-btn {
-  display: block;
+.today-time {
+  font-size: 13px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.btn-open-voice {
   width: 100%;
-  padding: 14px;
   background: var(--forest-green);
   color: #FFFFFF;
-  border-radius: 12px;
-  text-align: center;
-  text-decoration: none;
-  font-weight: 700;
-  font-size: 15px;
-  margin-bottom: 10px;
-  box-shadow: 0 4px 16px rgba(19, 78, 63, 0.25);
-  transition: all 0.2s;
   border: none;
+  padding: 14px 20px;
+  border-radius: 999px;
+  font-size: 14.5px;
+  font-weight: 700;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  box-shadow: 0 4px 16px rgba(19, 78, 63, 0.25);
+  transition: all 0.2s ease;
+  margin-top: auto;
 }
 
-.watch-btn:hover {
+.btn-open-voice:hover {
   background: var(--forest-green-hover);
   transform: translateY(-1px);
 }
 
-.copy-btn {
-  width: 100%;
-  padding: 10px;
-  background: #FFFFFF;
-  border: 1px solid var(--card-border);
-  color: var(--text-secondary);
-  border-radius: 10px;
-  cursor: pointer;
-  font-size: 13px;
-  font-weight: 600;
-  font-family: inherit;
-}
-
-/* Error Card */
-.err {
-  background: #FEF2F2;
-  border: 1.5px solid #FCA5A5;
-  border-radius: var(--radius-md);
-  padding: 20px;
-  margin-top: 24px;
-  display: none;
-}
-
-.err.show { display: block; }
-.err h3 { color: #DC2626; margin-bottom: 6px; font-size: 16px; font-weight: 700; }
-.err p { color: #991B1B; font-size: 13.5px; }
-
-/* Jobs & Scripts Cards */
-.jobs-grid { display: flex; flex-direction: column; gap: 10px; }
-.job-card {
-  background: #FFFFFF;
-  border: 1px solid var(--card-border);
-  border-radius: 14px;
-  padding: 16px 20px;
-  display: flex;
-  align-items: center;
+/* ── Bottom Row: Words in Use, This Week, FLN Target ─────────── */
+.bottom-row {
+  display: grid;
+  grid-template-columns: 1.2fr 0.9fr 1.2fr;
   gap: 16px;
-  transition: all 0.2s;
 }
 
-.job-card:hover {
-  border-color: var(--forest-green);
-  box-shadow: var(--shadow-sm);
+/* Words in Use */
+.words-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-.jthumb {
-  width: 52px;
-  height: 40px;
-  background: var(--forest-green-light);
-  color: var(--forest-green);
-  border-radius: 10px;
+.words-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.words-title {
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--text-main);
+}
+
+.words-badge {
+  font-size: 11px;
+  font-weight: 700;
+  background: #E0F2FE;
+  color: #0369A1;
+  padding: 3px 10px;
+  border-radius: 999px;
+}
+
+.word-entry {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.word-meta h4 {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-main);
+  font-family: 'Noto Sans Ol Chiki', inherit;
+}
+
+.word-meta p {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+/* This Week Donut */
+.donut-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+}
+
+.donut-title {
+  align-self: flex-start;
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--text-main);
+  margin-bottom: 10px;
+}
+
+.donut-wrapper {
+  position: relative;
+  width: 110px;
+  height: 110px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 20px;
-  flex-shrink: 0;
+  margin: 6px 0;
 }
 
-.jinfo { flex: 1; }
-.jtitle { font-size: 14.5px; font-weight: 700; margin-bottom: 3px; color: var(--text-primary); }
-.jmeta { font-size: 12px; color: var(--text-muted); }
-.jeng {
-  display: inline-block;
-  font-size: 11px;
-  padding: 2px 8px;
-  border-radius: 999px;
-  margin-left: 8px;
-  background: var(--mint);
-  color: var(--mint-dark);
-  font-weight: 600;
-}
-
-.jwatch {
-  padding: 8px 16px;
-  background: var(--forest-green-light);
-  border: 1px solid rgba(19, 78, 63, 0.25);
+.donut-text {
+  position: absolute;
+  font-size: 22px;
+  font-weight: 800;
   color: var(--forest-green);
-  border-radius: 10px;
-  text-decoration: none;
-  font-size: 13px;
-  font-weight: 700;
 }
 
-.no-jobs { text-align: center; color: var(--text-muted); padding: 40px; font-size: 14px; }
-.refresh-btn {
-  display: block;
-  width: fit-content;
-  margin: 0 auto 16px;
-  padding: 8px 20px;
-  background: #FFFFFF;
-  border: 1px solid var(--card-border);
-  color: var(--forest-green);
-  border-radius: 999px;
-  cursor: pointer;
-  font-size: 13px;
-  font-weight: 700;
-  box-shadow: var(--shadow-sm);
+/* FLN Target Card */
+.target-card {
+  background: var(--forest-green);
+  color: #FFFFFF;
+  border-color: var(--forest-green);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 8px 24px rgba(19, 78, 63, 0.25);
 }
 
-/* Modals */
-.sum-overlay, .study-modal-overlay {
+.target-sub {
+  font-size: 12px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.target-val {
+  font-size: 38px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin: 12px 0 6px;
+}
+
+/* ── Sleek Generation Modal ──────────────────────────────────── */
+.modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(17, 24, 39, 0.6);
+  background: rgba(17, 24, 39, 0.5);
   backdrop-filter: blur(6px);
   z-index: 1000;
   display: none;
   align-items: center;
   justify-content: center;
   padding: 20px;
-  overflow-y: auto;
 }
 
-.sum-overlay.show, .study-modal-overlay.show { display: flex; }
+.modal-overlay.show { display: flex; }
 
-.sum-modal, .study-modal {
+.generator-modal {
   background: #FFFFFF;
-  border: 1px solid var(--card-border);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-card);
   width: 100%;
-  max-width: 860px;
-  max-height: 90vh;
-  overflow-y: auto;
-  padding: 32px;
+  max-width: 640px;
+  padding: 30px;
+  box-shadow: 0 20px 45px rgba(19, 78, 63, 0.15);
+  border: 1px solid var(--card-border);
   position: relative;
-  box-shadow: var(--shadow-lg);
 }
 
-.sum-modal h2, .study-modal h2 {
-  color: var(--forest-green);
-  font-size: 22px;
-  font-weight: 800;
-  margin-bottom: 6px;
-}
-
-.sum-close, .study-close {
+.modal-close {
   position: absolute;
   top: 20px;
   right: 20px;
   background: #F1F5F9;
-  border: 1px solid #E2E8F0;
-  color: var(--text-secondary);
-  border-radius: 8px;
-  padding: 6px 14px;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
   cursor: pointer;
-  font-size: 13px;
-  font-weight: 700;
-}
-
-.sum-content {
-  background: #F8FAF9;
-  border: 1px solid var(--card-border);
-  border-radius: var(--radius-md);
-  padding: 22px;
   font-size: 14px;
-  line-height: 1.8;
-  color: var(--text-primary);
-  white-space: pre-wrap;
-  word-break: break-word;
-  max-height: 58vh;
-  overflow-y: auto;
-}
-
-/* Flashcards inside Modal */
-.fc-flip-wrap { perspective: 1000px; margin: 20px 0; cursor: pointer; }
-.fc-card {
-  min-height: 230px;
-  border-radius: 18px;
-  background: linear-gradient(135deg, #FFFFFF 0%, #F8FAF9 100%);
-  border: 2px solid #D1E3DA;
-  padding: 26px;
+  color: var(--text-muted);
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  box-shadow: 0 10px 25px rgba(19, 78, 63, 0.08);
-  transition: transform 0.3s;
+  align-items: center;
+  justify-content: center;
 }
 
-.fc-card.flipped {
-  background: linear-gradient(135deg, #F0FDF4 0%, #DCFCE7 100%);
-  border-color: #86EFAC;
+.modal-header {
+  margin-bottom: 20px;
 }
 
-.fc-badge {
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  color: var(--forest-green);
-  background: var(--mint);
-  padding: 4px 12px;
-  border-radius: 999px;
-  display: inline-block;
-}
-
-.fc-content {
+.modal-header h3 {
   font-size: 20px;
-  font-weight: 700;
-  color: var(--text-primary);
-  margin: 20px 0;
-  line-height: 1.6;
+  font-weight: 800;
+  color: var(--forest-green);
 }
 
-.fc-controls { display: flex; gap: 12px; justify-content: center; margin-top: 16px; }
-.fc-btn {
+.modal-header p {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+.prompt-textarea {
+  width: 100%;
+  height: 120px;
+  border: 1.5px solid var(--card-border);
+  border-radius: 14px;
+  padding: 14px;
+  font-size: 13.5px;
+  font-family: inherit;
+  color: var(--text-main);
+  outline: none;
+  resize: vertical;
+  margin-bottom: 14px;
+}
+
+.prompt-textarea:focus {
+  border-color: var(--forest-green);
+}
+
+.modal-row {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.modal-select {
+  flex: 1;
   background: #FFFFFF;
   border: 1px solid var(--card-border);
-  color: var(--forest-green);
-  padding: 9px 20px;
   border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--text-main);
+  outline: none;
+  font-family: 'Noto Sans Ol Chiki', inherit;
+}
+
+.btn-generate-primary {
+  width: 100%;
+  background: var(--forest-green);
+  color: #FFFFFF;
+  border: none;
+  padding: 13px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 700;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 4px 14px rgba(19, 78, 63, 0.25);
+  transition: all 0.2s;
+}
+
+.btn-generate-primary:hover:not(:disabled) {
+  background: var(--forest-green-hover);
+}
+
+.btn-generate-primary:disabled {
+  background: #CBD5E1;
+  cursor: not-allowed;
+}
+
+/* Modal Progress & Result */
+.modal-progress {
+  display: none;
+  margin-top: 18px;
+}
+
+.modal-progress.show { display: block; }
+
+.modal-pb {
+  height: 7px;
+  background: #E2ECE8;
+  border-radius: 99px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.modal-pb-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--forest-green), #10B981);
+  transition: width 0.4s;
+}
+
+.modal-status-text {
+  font-size: 12.5px;
+  color: var(--forest-green);
+  font-weight: 600;
+  text-align: center;
+}
+
+.modal-result {
+  display: none;
+  margin-top: 18px;
+  text-align: center;
+}
+
+.modal-result.show { display: block; }
+.btn-watch-result {
+  display: inline-block;
+  padding: 12px 24px;
+  background: var(--forest-green);
+  color: #FFFFFF;
+  border-radius: 999px;
   font-size: 13.5px;
   font-weight: 700;
-  box-shadow: var(--shadow-sm);
+  text-decoration: none;
+  box-shadow: 0 4px 14px rgba(19, 78, 63, 0.25);
 }
-
-.fc-btn:hover { background: var(--forest-green-light); border-color: var(--forest-green); }
-
-.fc-grid-view {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 12px;
-  margin-top: 20px;
-  max-height: 250px;
-  overflow-y: auto;
-}
-
-.fc-grid-item {
-  background: #F8FAF9;
-  border: 1px solid var(--card-border);
-  border-radius: 10px;
-  padding: 12px;
-  cursor: pointer;
-}
-
-/* Worksheet */
-.ws-sec {
-  background: #F8FAF9;
-  border: 1px solid var(--card-border);
-  border-radius: 12px;
-  padding: 20px;
-  margin-bottom: 16px;
-}
-
-.ws-sec-title {
-  font-size: 15px;
-  font-weight: 800;
-  color: var(--forest-green);
-  margin-bottom: 12px;
-}
-
-.ws-q-item { padding: 12px 0; border-bottom: 1px solid var(--card-border); }
-.ws-q-item:last-child { border-bottom: none; }
-.ws-q-txt { font-size: 14.5px; color: var(--text-primary); font-weight: 700; margin-bottom: 8px; }
-.ws-opts { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 8px 0; }
-.ws-opt { background: #FFFFFF; border: 1px solid var(--card-border); border-radius: 8px; padding: 8px 12px; font-size: 13px; color: var(--text-secondary); }
-.ws-ans { display: none; margin-top: 8px; padding: 10px 14px; background: #DCFCE7; border-left: 4px solid #16A34A; border-radius: 6px; color: #14532D; font-size: 13.5px; font-weight: 700; }
-.ws-ans.show { display: block; }
-.ws-ans-toggle { background: none; border: none; color: var(--forest-green); font-size: 12.5px; font-weight: 700; cursor: pointer; text-decoration: underline; }
 </style>
 </head>
 <body>
 
-<!-- ── Left Sidebar Navigation ──────────────────────────────── -->
+<!-- ── Left Sidebar (Matching Screenshot Pixel-for-Pixel) ──────── -->
 <aside class="sidebar">
   <div>
-    <!-- Logo & Title -->
-    <a href="/" class="brand-row">
-      <div class="brand-icon">S</div>
-      <div class="brand-text">
-        <h1>ShikshaSetu <span>v2.0</span></h1>
-        <p>Vernacular Pedagogy Engine · Govt. of Jharkhand</p>
-      </div>
-    </a>
+    <!-- Logo -->
+    <div class="logo-row">
+      <div class="logo-icon">S</div>
+      <div class="logo-title">ShikshaSetu</div>
+    </div>
 
-    <!-- Menu Section -->
-    <div class="nav-section-title">Menu</div>
-    <nav class="nav-menu">
-      <a class="nav-item" href="#dashboard"><span class="icon">📊</span> Dashboard</a>
-      <a class="nav-item active" href="/"><span class="icon">🎬</span> Video Studio</a>
-      <a class="nav-item" href="/study-tools"><span class="icon">📚</span> Lessons &amp; FLN</a>
-      <a class="nav-item" href="#voice"><span class="icon">🎙️</span> 2-Way Voice</a>
-      <a class="nav-item" href="#worksheets"><span class="icon">📝</span> Worksheets</a>
-      <a class="nav-item" href="#curriculum"><span class="icon">📖</span> Curriculum</a>
-      <a class="nav-item" href="#assistant"><span class="icon">🤖</span> AI Assistant</a>
+    <!-- MENU Section -->
+    <div class="menu-label">MENU</div>
+    <nav class="nav-links">
+      <a class="nav-link active" href="#"><span class="icon">⊞</span> Dashboard</a>
+      <a class="nav-link" href="#"><span class="icon">📖</span> Lessons</a>
+      <a class="nav-link" href="#" onclick="openGeneratorModal()"><span class="icon">🎙️</span> Voice</a>
+      <a class="nav-link" href="/study-tools"><span class="icon">📝</span> Worksheets</a>
+      <a class="nav-link" href="#"><span class="icon">📊</span> Curriculum</a>
+      <a class="nav-link" href="#"><span class="icon">🤖</span> Assistant</a>
     </nav>
 
-    <!-- General Controls Section -->
-    <div class="nav-section-title">General Settings</div>
-    <div class="sidebar-general">
-      <select class="sidebar-select">
-        <option>UI: English (EN)</option>
-        <option>UI: हिन्दी (Hindi)</option>
+    <!-- GENERAL Section -->
+    <div class="menu-label">GENERAL</div>
+    <div class="general-selects">
+      <select class="general-select">
+        <option>English</option>
+        <option>हिन्दी Hindi</option>
       </select>
-      <select class="sidebar-select" id="sidebarTribalSelect" onchange="syncTribalLang(this.value)">
-        <option value="Santhali">ᱥᱟᱱᱛᱟᱲᱤ Santhali (Ol Chiki)</option>
-        <option value="Ho">ᱦᱳ Ho (Warang Citi)</option>
+      <select class="general-select" id="langDropdown" onchange="syncSelectedLang(this.value)">
+        <option value="Santhali">ᱥᱟᱱᱛᱟᱲᱤ Santhali</option>
+        <option value="Ho">ᱦᱳ Ho</option>
         <option value="Mundari">ᱢᱩᱱᱰᱟᱨᱤ Mundari</option>
         <option value="Hindi">हिन्दी Hindi</option>
         <option value="English">English</option>
@@ -1292,915 +883,309 @@ textarea::placeholder {
     </div>
   </div>
 
-  <!-- Bottom Profile Card -->
+  <!-- User Profile Box -->
   <div>
-    <div class="profile-card">
-      <div class="profile-info">
-        <div class="profile-avatar">GJ</div>
-        <div class="profile-names">
+    <div class="profile-box">
+      <div class="profile-user">
+        <div class="profile-avatar">👤</div>
+        <div class="profile-meta">
           <h4>Guest Judge</h4>
-          <p>Primary FLN Teacher</p>
+          <p>Teacher</p>
         </div>
       </div>
-      <span style="font-size:16px; color:var(--text-muted); cursor:pointer;">↪</span>
+      <span style="font-size: 15px; color: var(--text-subtle); cursor: pointer;">↪</span>
     </div>
   </div>
 </aside>
 
-<!-- ── Main Content Area ────────────────────────────────────── -->
-<div class="main-wrapper">
-  <!-- Top App Bar -->
-  <header class="top-bar">
-    <div class="search-box">
-      <span style="color:var(--text-muted);">🔍</span>
-      <input type="text" placeholder="Search lessons, phrases, worksheets...">
-      <span class="key-badge">Ctrl+K</span>
+<!-- ── Main Dashboard Area ───────────────────────────────────── -->
+<div class="main-content">
+  <!-- Top Navigation Bar -->
+  <header class="top-nav">
+    <div class="search-bar">
+      <span style="color: var(--text-subtle);">🔍</span>
+      <input type="text" placeholder="Search lessons, phrases, worksheets">
+      <span class="search-badge">⌘F</span>
     </div>
-    <div class="top-actions">
-      <div class="lang-pill">
-        <span>🌐</span> ᱥᱟᱱᱛᱟᱲᱤ Santhali (Active)
+
+    <div class="nav-right">
+      <div class="lang-indicator">
+        <span>🌐 UI: EN ▾ | Santhali</span>
       </div>
-      <button class="btn-sync" onclick="location.reload()">
-        <span>🔄</span> Sync
+      <button class="btn-new-lesson" onclick="openGeneratorModal()">
+        <span>+</span> New lesson
       </button>
-      <button class="btn-new" onclick="switchTab('upload')">
-        <span>+</span> New Lesson
+      <button class="btn-sync-clean" onclick="location.reload()">
+        <span>🔄</span> Sync
       </button>
     </div>
   </header>
 
-  <!-- Page Content -->
-  <main class="content-body">
-    <div class="page-header">
-      <h2>FLN Video Studio</h2>
-      <p>Bridging language barriers for Hindi-medium primary teachers delivering FLN in tribal mother tongues.</p>
+  <!-- Dashboard Content -->
+  <main class="dashboard-body">
+    <!-- Title -->
+    <div class="dash-header">
+      <h2>Dashboard</h2>
+      <p>Plan the day. Track FLN delivery and tablet sync.</p>
     </div>
 
-    <!-- Stat Cards Row (Matching ShikshaSetu Dashboard) -->
-    <div class="stats-grid">
-      <div class="stat-card featured">
-        <div class="stat-top">
-          <span class="stat-label">Lessons</span>
-          <span class="stat-arrow">↗</span>
+    <!-- 4 Stat Cards Row -->
+    <div class="stats-row">
+      <!-- Card 1: Lessons -->
+      <div class="stat-item active-green">
+        <div class="stat-header">
+          <span class="stat-name">Lessons</span>
+          <span class="stat-icon-btn">↗</span>
         </div>
-        <div class="stat-number">24</div>
-        <div class="stat-pill">This month</div>
+        <div class="stat-val">24</div>
+        <div class="stat-tag">This month</div>
       </div>
 
-      <div class="stat-card">
-        <div class="stat-top">
-          <span class="stat-label">Phrases</span>
-          <span class="stat-arrow">↗</span>
+      <!-- Card 2: Phrases -->
+      <div class="stat-item">
+        <div class="stat-header">
+          <span class="stat-name">Phrases</span>
+          <span class="stat-icon-btn">↗</span>
         </div>
-        <div class="stat-number">10</div>
-        <div class="stat-pill pill-green">Phrases used</div>
+        <div class="stat-val">10</div>
+        <div class="stat-tag tag-green">Phrases used</div>
       </div>
 
-      <div class="stat-card">
-        <div class="stat-top">
-          <span class="stat-label">Lakshyas</span>
-          <span class="stat-arrow">↗</span>
+      <!-- Card 3: Lakshyas -->
+      <div class="stat-item">
+        <div class="stat-header">
+          <span class="stat-name">Lakshyas</span>
+          <span class="stat-icon-btn">↗</span>
         </div>
-        <div class="stat-number">12</div>
-        <div class="stat-pill pill-blue">FLN Targets</div>
+        <div class="stat-val">12</div>
+        <div class="stat-tag tag-blue">Lakshyas</div>
       </div>
 
-      <div class="stat-card">
-        <div class="stat-top">
-          <span class="stat-label">Pending logs</span>
-          <span class="stat-arrow">↗</span>
+      <!-- Card 4: Pending logs -->
+      <div class="stat-item">
+        <div class="stat-header">
+          <span class="stat-name">Pending logs</span>
+          <span class="stat-icon-btn">↗</span>
         </div>
-        <div class="stat-number">2</div>
-        <div class="stat-pill pill-amber">Up to date</div>
+        <div class="stat-val">2</div>
+        <div class="stat-tag tag-amber">Up to date</div>
       </div>
     </div>
 
-    <!-- Main Studio Card -->
-    <div class="studio-card">
-      <!-- Educator Avatar Banner -->
-      <div class="educator-banner">
-        <svg class="avatar-svg" viewBox="0 0 200 240">
-          <circle cx="100" cy="110" r="85" fill="none" stroke="#134E3F" stroke-width="2" opacity="0.3"/>
-          <circle cx="100" cy="110" r="72" fill="#EBF4F0"/>
-          <ellipse cx="100" cy="46" rx="72" ry="30" fill="#134E3F"/>
-          <ellipse cx="44" cy="80" rx="18" ry="32" fill="#134E3F"/>
-          <ellipse cx="156" cy="80" rx="18" ry="32" fill="#134E3F"/>
-          <ellipse cx="100" cy="120" rx="55" ry="60" fill="#FCD9A0"/>
-          <ellipse cx="78" cy="110" rx="10" ry="14" fill="#FFFFFF"/><ellipse cx="78" cy="110" rx="6" ry="8" fill="#134E3F"/>
-          <ellipse cx="122" cy="110" rx="10" ry="14" fill="#FFFFFF"/><ellipse cx="122" cy="110" rx="6" ry="8" fill="#134E3F"/>
-          <path d="M65 95 Q78 88 91 95" stroke="#5B3A1A" stroke-width="3" fill="none"/>
-          <path d="M109 95 Q122 88 135 95" stroke="#5B3A1A" stroke-width="3" fill="none"/>
-          <ellipse cx="100" cy="145" rx="22" ry="8" fill="#1A0A00" stroke="#EA580C" stroke-width="1.5"/>
-          <ellipse cx="100" cy="210" rx="60" ry="40" fill="#134E3F"/>
-          <rect x="82" y="180" width="36" height="35" fill="#0F3E33" rx="4"/>
-          <polygon points="100,182 108,195 100,230 92,195" fill="#EA580C" opacity="0.9"/>
-        </svg>
-        <div class="educator-info">
-          <h3>🧑‍🏫 ShikshaSetu Vernacular AI Educator</h3>
-          <p>Transforms textbook chapters, syllabus PDFs, or concepts into animated bilingual FLN explainer videos with native script text &amp; speech.</p>
-          <div class="engine-badges">
-            <span class="engine-tag eng-free">Remotion Video Studio ✅</span>
-            <span class="engine-tag eng-el">ElevenLabs Voice ✅</span>
-            <span class="engine-tag eng-did" id="didStatus">D-ID: Checking...</span>
-            <span class="engine-tag eng-free">Ol Chiki Script Native ✅</span>
+    <!-- Middle Row: NIPUN progress & TODAY -->
+    <div class="middle-row">
+      <!-- NIPUN Progress Bar Chart Card -->
+      <div class="dash-card">
+        <div class="chart-header">
+          <div class="chart-title">NIPUN progress</div>
+          <div class="chart-pct">74%</div>
+        </div>
+
+        <div class="chart-area">
+          <div class="y-axis">
+            <span>100</span>
+            <span>75</span>
+            <span>50</span>
+            <span>25</span>
+            <span>0</span>
+          </div>
+          <div class="bars-container">
+            <div class="bar-col">
+              <div class="bar-rect" style="height: 65%;"></div>
+              <span class="bar-label">S</span>
+            </div>
+            <div class="bar-col">
+              <div class="bar-rect" style="height: 90%;"></div>
+              <span class="bar-label">M</span>
+            </div>
+            <div class="bar-col">
+              <div class="bar-rect" style="height: 72%;"></div>
+              <span class="bar-label">T</span>
+            </div>
+            <div class="bar-col">
+              <div class="bar-rect" style="height: 94%;"></div>
+              <span class="bar-label">W</span>
+            </div>
+            <div class="bar-col">
+              <div class="bar-rect" style="height: 68%;"></div>
+              <span class="bar-label">T2</span>
+            </div>
+            <div class="bar-col">
+              <div class="bar-rect" style="height: 85%;"></div>
+              <span class="bar-label">F</span>
+            </div>
+            <div class="bar-col">
+              <div class="bar-rect" style="height: 70%;"></div>
+              <span class="bar-label">S2</span>
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- Tab Switcher -->
-      <div class="tabs">
-        <button class="tab active" onclick="switchTab('upload')">📎 Upload Syllabus / PPT</button>
-        <button class="tab" onclick="switchTab('text')">✍️ Enter Concept / Text</button>
-        <button class="tab" onclick="switchTab('jobs')">🎬 Generated Videos</button>
-        <button class="tab" onclick="switchTab('scripts')">📄 Pedagogy Scripts</button>
-        <button class="tab" onclick="switchTab('credits')">⚡ AI Engine Status</button>
-      </div>
+      <!-- TODAY Card -->
+      <div class="dash-card today-card">
+        <div>
+          <div class="today-caption">TODAY</div>
+          <div class="today-heading">Grade 2 oral reading circle</div>
+          <div class="today-time">09:30 - 10:15 · Mother tongue: Santhali</div>
+        </div>
 
-      <!-- Panel: File Upload -->
-      <div class="panel active" id="panel-upload">
-        <div class="dropzone" id="dz" onclick="document.getElementById('fi').click()">
-          <input type="file" id="fi" accept=".pptx,.ppt,.pdf,.txt,.md" onchange="onFile(this)">
-          <div class="icon">📎</div>
-          <h3>Drag &amp; Drop Syllabus, PPT, or PDF</h3>
-          <p>Supports PPTX, PDF, TXT, MD — Max 50MB</p>
+        <button class="btn-open-voice" onclick="openGeneratorModal()">
+          <span>►</span> Open voice
+        </button>
+      </div>
+    </div>
+
+    <!-- Bottom Row: Words in Use, This Week, FLN Target -->
+    <div class="bottom-row">
+      <!-- Words in use -->
+      <div class="dash-card words-card">
+        <div class="words-top">
+          <div class="words-title">Words in use</div>
+          <div class="words-badge">1,240 Total Words</div>
         </div>
-        <div class="file-sel" id="fsel">
-          <span id="ficon" style="font-size:24px">📄</span>
-          <span class="fname" id="fname"></span>
-          <span id="fsize" style="color:var(--text-muted); font-size:13px"></span>
-          <button class="rm" onclick="clearFile()">✕ Remove</button>
-        </div>
-        <div class="lang-row">
-          <label class="lang-label">🌍 Target Mother Tongue:</label>
-          <select id="langSelect" class="lang-select">
-            <option value="Santhali" selected>🇮🇳 Santhali (ᱥᱟᱱᱛᱟᱲᱤ / Ol Chiki)</option>
-            <option value="Ho">🇮🇳 Ho (ᱦᱳ / Warang Citi)</option>
-            <option value="Mundari">🇮🇳 Mundari (ᱢᱩᱱᱰᱟᱨᱤ)</option>
-            <option value="Hindi">🇮🇳 Hindi (हिंदी)</option>
-            <option value="English">🇺🇸 English</option>
-            <option value="Hinglish">🇮🇳 Hinglish (Bilingual Mix)</option>
-            <option value="Bengali">🇮🇳 Bengali (বাংলা)</option>
-            <option value="Marathi">🇮🇳 Marathi (मराठी)</option>
-            <option value="Telugu">🇮🇳 Telugu (తెలుగు)</option>
-            <option value="Tamil">🇮🇳 Tamil (தமிழ்)</option>
-            <option value="Gujarati">🇮🇳 Gujarati (ગુજરાતી)</option>
-            <option value="Kannada">🇮🇳 Kannada (ಕನ್ನಡ)</option>
-            <option value="Malayalam">🇮🇳 Malayalam (മലയാളം)</option>
-            <option value="Punjabi">🇮🇳 Punjabi (ਪੰਜਾਬੀ)</option>
-            <option value="Urdu">🇮🇳 Urdu (اردو)</option>
-          </select>
-        </div>
-        <div class="action-row">
-          <button class="btn-outline" id="summaryBtnFile" onclick="getSummaryFromFile()" disabled>📋 Pedagogy Plan</button>
-          <button class="btn-outline" id="fcBtnFile" onclick="genFlashcardsFromFile()" disabled>🃏 Flashcards</button>
-          <button class="btn-outline" id="wsBtnFile" onclick="genWorksheetFromFile()" disabled>📝 Worksheet</button>
-          <button class="btn-primary" id="uploadBtn" onclick="genFromFile()" disabled>🎬 Generate Video</button>
+
+        <div class="word-entry">
+          <div class="word-meta">
+            <h4>Book - ᱯᱚᱛᱚᱵ</h4>
+            <p>Literacy · 142 usages in class</p>
+          </div>
+          <div class="stat-tag tag-green">Mastered</div>
         </div>
       </div>
 
-      <!-- Panel: Text Prompt -->
-      <div class="panel" id="panel-text">
-        <textarea id="rawText" placeholder="Type or paste pedagogical lesson content here...&#10;&#10;Example: Explain 2-digit addition with carryover using everyday market examples in Santhali Ol Chiki script."></textarea>
-        
-        <div class="quick-topics">
-          <span style="font-size:12px; color:var(--text-muted); font-weight:700;">Quick FLN Topics:</span>
-          <span class="topic-chip" onclick="setQuickTopic('Explain 2-digit addition and place value with pebbles and market examples.')">🔢 Addition &amp; Carryover</span>
-          <span class="topic-chip" onclick="setQuickTopic('Explain photosynthesis, plant roots, and leaves in local nature context.')">🌱 Plant Life &amp; Leaves</span>
-          <span class="topic-chip" onclick="setQuickTopic('Explain the water cycle: rain, clouds, rivers, and evaporation.')">💧 Water Cycle</span>
-          <span class="topic-chip" onclick="setQuickTopic('Explain binary search and divide-and-conquer logic step-by-step.')">💻 Binary Search Logic</span>
-          <span class="topic-chip" onclick="setQuickTopic('Teach primary geometric shapes: circle, square, triangle with village objects.')">📐 Basic Geometry</span>
-        </div>
-
-        <div class="lang-row">
-          <label class="lang-label">🌍 Target Mother Tongue:</label>
-          <select id="langSelect2" class="lang-select">
-            <option value="Santhali" selected>🇮🇳 Santhali (ᱥᱟᱱᱛᱟᱲᱤ / Ol Chiki)</option>
-            <option value="Ho">🇮🇳 Ho (ᱦᱳ / Warang Citi)</option>
-            <option value="Mundari">🇮🇳 Mundari (ᱢᱩᱱᱰᱟᱨᱤ)</option>
-            <option value="Hindi">🇮🇳 Hindi (हिंदी)</option>
-            <option value="English">🇺🇸 English</option>
-            <option value="Hinglish">🇮🇳 Hinglish (Bilingual Mix)</option>
-            <option value="Bengali">🇮🇳 Bengali (বাংলা)</option>
-            <option value="Marathi">🇮🇳 Marathi (मराठी)</option>
-            <option value="Telugu">🇮🇳 Telugu (తెలుగు)</option>
-            <option value="Tamil">🇮🇳 Tamil (தமிழ்)</option>
-            <option value="Gujarati">🇮🇳 Gujarati (ગુજરાતી)</option>
-            <option value="Kannada">🇮🇳 Kannada (ಕನ್ನಡ)</option>
-            <option value="Malayalam">🇮🇳 Malayalam (മലയാളം)</option>
-            <option value="Punjabi">🇮🇳 Punjabi (ਪੰਜਾਬੀ)</option>
-            <option value="Urdu">🇮🇳 Urdu (اردو)</option>
-          </select>
-        </div>
-        <div class="action-row">
-          <button class="btn-outline" id="summaryBtnText" onclick="getSummaryFromText()">📋 Pedagogy Plan</button>
-          <button class="btn-outline" id="fcBtnText" onclick="genFlashcardsFromText()">🃏 Flashcards</button>
-          <button class="btn-outline" id="wsBtnText" onclick="genWorksheetFromText()">📝 Worksheet</button>
-          <button class="btn-primary" id="textBtn" onclick="genFromText()">🎬 Generate Video</button>
+      <!-- This week Donut Chart -->
+      <div class="dash-card donut-card">
+        <div class="donut-title">This week</div>
+        <div class="donut-wrapper">
+          <svg width="110" height="110" viewBox="0 0 110 110">
+            <circle cx="55" cy="55" r="45" fill="none" stroke="#E5ECE8" stroke-width="12" />
+            <circle cx="55" cy="55" r="45" fill="none" stroke="#134E3F" stroke-width="12"
+              stroke-dasharray="283" stroke-dashoffset="167" stroke-linecap="round"
+              transform="rotate(-90 55 55)" />
+          </svg>
+          <div class="donut-text">41%</div>
         </div>
       </div>
 
-      <!-- Panel: Jobs -->
-      <div class="panel" id="panel-jobs">
-        <button class="refresh-btn" onclick="loadJobs()">🔄 Refresh Video List</button>
-        <div class="jobs-grid" id="jobsGrid"><div class="no-jobs">Loading generated videos...</div></div>
-      </div>
-
-      <!-- Panel: Scripts -->
-      <div class="panel" id="panel-scripts">
-        <button class="refresh-btn" onclick="loadScripts()">🔄 Refresh Script Documents</button>
-        <div class="jobs-grid" id="scriptsGrid"><div class="no-jobs">Loading scripts...</div></div>
-      </div>
-
-      <!-- Panel: Credits -->
-      <div class="panel" id="panel-credits">
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
-          <h3 style="font-size:17px; font-weight:700; color:var(--forest-green);">⚡ Live AI Engine &amp; API Health</h3>
-          <button onclick="loadCredits()" class="refresh-btn" style="margin:0;">🔄 Refresh Status</button>
-        </div>
-        <div id="creditsGrid" style="display:flex; flex-direction:column; gap:12px;">
-          <div style="color:var(--text-muted); text-align:center; padding:30px;">Loading AI status...</div>
-        </div>
-        <p style="color:var(--text-muted); font-size:12px; text-align:center; margin-top:16px;">
-          ℹ️ Rotation order: Gemini 2.5 → Groq Llama 3.3 → Cerebras → OpenRouter (auto-failover)
-        </p>
-      </div>
-
-      <!-- Progress Monitor Card -->
-      <div class="prog-card" id="progCard">
-        <div class="steps">
-          <div class="step wait" id="s1"><span class="step-icon">🤖</span><span class="step-text">Gemini — Reading syllabus &amp; generating vernacular script</span><span class="step-badge">Waiting</span></div>
-          <div class="step wait" id="s2"><span class="step-icon">🔊</span><span class="step-text">ElevenLabs — Generating native speech voiceover</span><span class="step-badge">Waiting</span></div>
-          <div class="step wait" id="s3"><span class="step-icon">🎭</span><span class="step-text">Avatar — Generating animated teacher character</span><span class="step-badge">Waiting</span></div>
-          <div class="step wait" id="s4"><span class="step-icon">🎥</span><span class="step-text">Remotion — Rendering ShikshaSetu HD educational video</span><span class="step-badge">Waiting</span></div>
-          <div class="step wait" id="s5"><span class="step-icon">☁️</span><span class="step-text">Cloud Sync — Finalizing tablet-ready package</span><span class="step-badge">Waiting</span></div>
-        </div>
-        <div class="pb-wrap"><div class="pb" id="pb"></div></div>
-        <p class="prog-label" id="progLabel">Starting generation pipeline...</p>
-        
-        <!-- Live LLM Logs -->
-        <div id="llmLogs">
-          <div style="color: #94A3B8; margin-bottom: 5px; font-weight: bold;">⚡ Live AI Pipeline Logs:</div>
-          <div id="llmLogContent"></div>
-        </div>
-      </div>
-
-      <!-- Result Card -->
-      <div class="result" id="result">
-        <h3>✅ Educational Video Generated Successfully!</h3>
-        <div class="meta-grid">
-          <div class="meta-item"><label>Title</label><span id="rTitle"></span></div>
-          <div class="meta-item"><label>Language</label><span id="rLang"></span></div>
-          <div class="meta-item"><label>Scenes</label><span id="rScenes"></span></div>
-          <div class="meta-item"><label>Theme</label><span>ShikshaSetu FLN</span></div>
-        </div>
-        <a href="#" target="_blank" class="watch-btn" id="watchBtn">▶ Watch Video in Studio Player</a>
-        <a href="#" target="_blank" class="watch-btn" id="mdBtn" style="background:#0284C7; margin-top:8px;">📄 Download Vernacular Script (Markdown)</a>
-        <div style="display:flex; gap:10px; margin-top:10px; flex-wrap:wrap;">
-          <button class="watch-btn" id="resFcBtn" style="background:#134E3F; flex:1; min-width:160px; margin-bottom:0;" onclick="genFlashcardsFromResult()">🃏 Make Flashcards in <span id="rLangFc">this language</span></button>
-          <button class="watch-btn" id="resWsBtn" style="background:#EA580C; flex:1; min-width:160px; margin-bottom:0;" onclick="genWorksheetFromResult()">📝 Make Worksheet in <span id="rLangWs">this language</span></button>
-        </div>
-        <button class="copy-btn" onclick="copyUrl()" style="margin-top:10px;">📋 Copy Video URL</button>
-      </div>
-
-      <!-- Error Card -->
-      <div class="err" id="err">
-        <h3>❌ Generation Failed</h3>
-        <p id="errMsg"></p>
+      <!-- FLN Target Card -->
+      <div class="dash-card target-card">
+        <div class="target-sub">FLN Target (Grade 1-3)</div>
+        <div class="target-val">84% Achieved</div>
+        <div style="font-size: 12px; opacity: 0.9;">Targeted mastery across foundational literacy &amp; numeracy</div>
       </div>
     </div>
   </main>
 </div>
 
-<!-- ── Summary Modal ────────────────────────────────────────── -->
-<div class="sum-overlay" id="sumOverlay" onclick="if(event.target===this) closeSummary()">
-  <div class="sum-modal">
-    <button class="sum-close" onclick="closeSummary()">✕ Close</button>
-    <h2>📋 Vernacular Pedagogy Script</h2>
-    <div style="font-size:13px; color:var(--text-muted); margin-bottom:18px;" id="sumMeta">Scene-by-scene breakdown for classroom delivery</div>
-    <div class="sum-content" id="sumContent">Loading...</div>
-    <div style="display:flex; gap:12px; margin-top:20px;">
-      <button class="btn-primary" id="sumBtnVideo" onclick="convertSummaryToVideo()" style="flex:1;">🎬 Generate Full Video from This Plan</button>
-      <button class="btn-outline" onclick="copyMarkdown()">📋 Copy</button>
+<!-- ── Video Generation Modal (Triggered by + New lesson or Open voice) ── -->
+<div class="modal-overlay" id="generatorModal" onclick="if(event.target===this) closeGeneratorModal()">
+  <div class="generator-modal">
+    <button class="modal-close" onclick="closeGeneratorModal()">✕</button>
+    <div class="modal-header">
+      <h3>New Lesson Video Generation</h3>
+      <p>Enter a concept or upload content to generate a vernacular FLN explainer video.</p>
+    </div>
+
+    <textarea class="prompt-textarea" id="modalPrompt" placeholder="Type or paste lesson topic here...&#10;&#10;Example: Explain 2-digit addition with carryover using market examples in Santhali."></textarea>
+
+    <div class="modal-row">
+      <select class="modal-select" id="modalLang">
+        <option value="Santhali" selected>ᱥᱟᱱᱛᱟᱲᱤ Santhali (Ol Chiki)</option>
+        <option value="Ho">ᱦᱳ Ho</option>
+        <option value="Mundari">ᱢᱩᱱᱰᱟᱨᱤ Mundari</option>
+        <option value="Hindi">हिन्दी Hindi</option>
+        <option value="English">English</option>
+      </select>
+    </div>
+
+    <button class="btn-generate-primary" id="btnGen" onclick="triggerVideoGen()">
+      <span>🎬</span> Generate Video
+    </button>
+
+    <!-- Progress bar in modal -->
+    <div class="modal-progress" id="modalProg">
+      <div class="modal-pb"><div class="modal-pb-fill" id="modalPbFill"></div></div>
+      <div class="modal-status-text" id="modalProgText">Starting generation...</div>
+    </div>
+
+    <!-- Result in modal -->
+    <div class="modal-result" id="modalRes">
+      <p style="font-weight: 700; color: var(--forest-green); margin-bottom: 12px;">✅ Video Generated Successfully!</p>
+      <a href="#" target="_blank" class="btn-watch-result" id="modalWatchLink">▶ Watch Video</a>
     </div>
   </div>
 </div>
 
-<!-- ── Study Tools Modal (Flashcards & Worksheets) ──────────── -->
-<div class="study-modal-overlay" id="studyModalOverlay" onclick="if(event.target===this) closeStudyModal()">
-  <div class="study-modal">
-    <button class="study-close" onclick="closeStudyModal()">✕ Close</button>
-    <h2 id="studyModalTitle">🃏 Interactive FLN Flashcards</h2>
-    <div style="font-size:13px; color:var(--text-muted); margin-bottom:18px;" id="studyModalMeta">Language: Santhali · ShikshaSetu Pedagogy Engine</div>
-    <div id="studyModalBody"></div>
-    <div style="display:flex; justify-content:space-between; align-items:center; margin-top:20px; padding-top:16px; border-top:1px solid var(--card-border); flex-wrap:wrap; gap:10px;">
-      <a href="/study-tools" target="_blank" style="color:var(--forest-green); font-size:13px; text-decoration:none; font-weight:700; display:flex; align-items:center; gap:4px;">
-        📚 Open Full Study Tools Suite ↗
-      </a>
-      <div style="display:flex; gap:10px;">
-        <button class="fc-btn" id="studyPrintBtn" style="display:none;" onclick="window.print()">🖨️ Print / Save PDF</button>
-        <button class="fc-btn" onclick="closeStudyModal()">Done</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ── JavaScript Engine ────────────────────────────────────── -->
 <script>
-let vidUrl = '';
-let _currentJob = null;
-
-fetch('/health').then(r=>r.json()).then(d=>{
-  const did = d?.avatar?.did || '';
-  const el = document.getElementById('didStatus');
-  el.textContent = did.includes('Active') ? 'D-ID: Active ✅' : 'D-ID: Remotion Fallback';
-  el.className = did.includes('Active') ? 'engine-tag eng-free' : 'engine-tag eng-did';
-}).catch(()=>{});
-
-function syncTribalLang(val) {
-  const l1 = document.getElementById('langSelect');
-  const l2 = document.getElementById('langSelect2');
-  if (l1) l1.value = val;
-  if (l2) l2.value = val;
+function openGeneratorModal() {
+  document.getElementById('generatorModal').classList.add('show');
 }
-
-function setQuickTopic(text) {
-  const el = document.getElementById('rawText');
-  if (el) {
-    el.value = text;
-    el.focus();
-  }
+function closeGeneratorModal() {
+  document.getElementById('generatorModal').classList.remove('show');
 }
-
-function switchTab(t) {
-  const tabs = ['upload', 'text', 'jobs', 'scripts', 'credits'];
-  document.querySelectorAll('.tab').forEach((el,i)=>el.classList.toggle('active',tabs[i]===t));
-  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
-  document.getElementById('panel-'+t).classList.add('active');
-  if(t==='jobs') loadJobs();
-  if(t==='scripts') loadScripts();
-  if(t==='credits') loadCredits();
+function syncSelectedLang(val) {
+  document.getElementById('modalLang').value = val;
 }
-
-function onFile(inp){
-  const f=inp.files[0]; if(!f) return;
-  const ext=f.name.split('.').pop().toLowerCase();
-  const icons={pptx:'📊',ppt:'📊',pdf:'📄',txt:'📝',md:'📝'};
-  document.getElementById('ficon').textContent=icons[ext]||'📁';
-  document.getElementById('fname').textContent=f.name;
-  document.getElementById('fsize').textContent=(f.size/1024).toFixed(1)+' KB';
-  document.getElementById('fsel').classList.add('show');
-  document.getElementById('uploadBtn').disabled=false;
-  document.getElementById('summaryBtnFile').disabled=false;
-  if(document.getElementById('fcBtnFile')) document.getElementById('fcBtnFile').disabled=false;
-  if(document.getElementById('wsBtnFile')) document.getElementById('wsBtnFile').disabled=false;
-}
-
-function clearFile(){
-  document.getElementById('fi').value='';
-  document.getElementById('fsel').classList.remove('show');
-  document.getElementById('uploadBtn').disabled=true;
-  document.getElementById('summaryBtnFile').disabled=true;
-  if(document.getElementById('fcBtnFile')) document.getElementById('fcBtnFile').disabled=true;
-  if(document.getElementById('wsBtnFile')) document.getElementById('wsBtnFile').disabled=true;
-}
-
-const dz=document.getElementById('dz');
-dz.addEventListener('dragover',e=>{e.preventDefault();dz.style.borderColor='var(--forest-green)';dz.style.background='var(--forest-green-light)';});
-dz.addEventListener('dragleave',()=>{dz.style.borderColor='';dz.style.background='';});
-dz.addEventListener('drop',e=>{e.preventDefault();dz.style.borderColor='';dz.style.background='';const f=e.dataTransfer.files[0];if(f){const inp=document.getElementById('fi');inp.files=e.dataTransfer.files;onFile(inp);}});
 
 let isGenerating = false;
-
-async function genFromFile(){
+async function triggerVideoGen() {
   if (isGenerating) return;
-  const f=document.getElementById('fi').files[0]; if(!f) return;
-  const lang = document.getElementById('langSelect').value;
-  isGenerating = true;
-  document.getElementById('uploadBtn').disabled = true;
-  document.getElementById('summaryBtnFile').disabled = true;
-  const form=new FormData(); form.append('file',f); form.append('script_language', lang);
-  try {
-    await run(()=>fetch('/generate-from-file',{method:'POST',body:form}));
-  } finally {
-    isGenerating = false;
+  const prompt = document.getElementById('modalPrompt').value.trim();
+  const lang = document.getElementById('modalLang').value;
+  if (prompt.length < 5) {
+    alert('Please enter at least 5 characters for the lesson topic.');
+    return;
   }
-}
 
-async function genFromText(){
-  if (isGenerating) return;
-  const t=document.getElementById('rawText').value.trim();
-  const lang = document.getElementById('langSelect2').value;
-  if(t.length<10){alert('At least 10 characters needed.');return;}
   isGenerating = true;
-  try {
-    await run(()=>fetch('/generate',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({raw_text:t, script_language: lang})}));
-  } finally {
-    isGenerating = false;
-  }
-}
-
-async function run(fetchFn){
-  hideAll(); show('progCard'); disableAll(true);
-  
-  ['s1','s2','s3','s4','s5'].forEach(id => setStep(id,'wait','Waiting'));
-  setProg(0, 'Starting ShikshaSetu pipeline...');
-  document.getElementById('llmLogContent').innerHTML = '';
-  document.getElementById('llmLogs').style.display = 'none';
+  document.getElementById('btnGen').disabled = true;
+  document.getElementById('modalProg').classList.add('show');
+  document.getElementById('modalRes').classList.remove('show');
+  document.getElementById('modalPbFill').style.width = '10%';
+  document.getElementById('modalProgText').textContent = 'Generating vernacular script...';
 
   try {
-    const res = await fetchFn(); 
+    const res = await fetch('/generate', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ raw_text: prompt, script_language: lang })
+    });
     const d = await res.json();
-    
-    if(d.success) {
-      const jobId = d.jobId;
-      const sse = new EventSource(`/progress/${jobId}`);
-      
-      sse.onmessage = async (e) => {
+    if (d.success) {
+      const sse = new EventSource(`/progress/${d.jobId}`);
+      sse.onmessage = (e) => {
         const state = JSON.parse(e.data);
-        if (state.isError) {
-          sse.close();
-          document.getElementById('errMsg').textContent = state.message;
-          hide('progCard'); show('err');
-          disableAll(false);
-          return;
-        }
-
-        setProg(state.pct, state.message);
-        
-        if (state.phase === 'gemini' && (state.message.includes('Generating') || state.message.includes('failed') || state.message.includes('LLM failed'))) {
-           document.getElementById('llmLogs').style.display = 'block';
-           const p = document.createElement('div');
-           p.textContent = `> ${state.message}`;
-           p.style.marginBottom = '4px';
-           if (state.message.includes('failed')) p.style.color = '#EF4444';
-           else p.style.color = '#34D399';
-           document.getElementById('llmLogContent').appendChild(p);
-           document.getElementById('llmLogs').scrollTop = 9999;
-        }
-        
-        const pMap = { init: 's1', gemini: 's1', voice: 's2', avatar: 's3', render: 's4', upload: 's5', done: 's5' };
-        const act = pMap[state.phase] || 's1';
-        
-        ['s1','s2','s3','s4','s5'].forEach(id => {
-          if (id < act) setStep(id, 'done', 'Done');
-          else if (id === act) setStep(id, 'active', `${state.pct}%`);
-        });
+        document.getElementById('modalPbFill').style.width = state.pct + '%';
+        document.getElementById('modalProgText').textContent = state.message;
 
         if (state.done) {
           sse.close();
-          const jRes = await fetch(`/jobs/${jobId}`);
-          const jData = await jRes.json();
-          if (jData.success) {
-            const job = jData.job;
-            _currentJob = job;
-            vidUrl = job.video_url;
-            document.getElementById('rTitle').textContent = job.title;
-            document.getElementById('rLang').textContent = job.language;
-            if (document.getElementById('rLangFc')) document.getElementById('rLangFc').textContent = job.language;
-            if (document.getElementById('rLangWs')) document.getElementById('rLangWs').textContent = job.language;
-            document.getElementById('rScenes').textContent = job.scene_count + ' scenes';
-            document.getElementById('watchBtn').href = job.video_url;
-            document.getElementById('mdBtn').href = `/script/${jobId}/markdown`;
-            setTimeout(()=>{hide('progCard');show('result');}, 1200);
-          }
-          disableAll(false);
+          fetch(`/jobs/${d.jobId}`).then(r => r.json()).then(jData => {
+            if (jData.success) {
+              document.getElementById('modalWatchLink').href = jData.job.video_url;
+              document.getElementById('modalRes').classList.add('show');
+            }
+          });
+          isGenerating = false;
+          document.getElementById('btnGen').disabled = false;
         }
       };
-      
       sse.onerror = () => {
         sse.close();
-        document.getElementById('errMsg').textContent = 'Connection interrupted. Please verify backend console.';
-        hide('progCard'); show('err');
-        disableAll(false);
+        document.getElementById('modalProgText').textContent = 'Progress stream finished.';
+        isGenerating = false;
+        document.getElementById('btnGen').disabled = false;
       };
-      
     } else {
-      document.getElementById('errMsg').textContent = d.error || 'Unknown error';
-      hide('progCard'); show('err');
-      disableAll(false);
+      alert('Error: ' + (d.error || 'Failed to start job'));
+      isGenerating = false;
+      document.getElementById('btnGen').disabled = false;
     }
-  } catch(e){
-    document.getElementById('errMsg').textContent = e.message;
-    hide('progCard'); show('err');
-    disableAll(false);
-  }
-}
-
-function setStep(id,cls,badge){const el=document.getElementById(id);el.className='step '+cls;el.querySelector('.step-badge').textContent=badge;}
-function setProg(pct,lbl){document.getElementById('pb').style.width=pct+'%';document.getElementById('progLabel').textContent=lbl;}
-
-async function loadJobs(){
-  const g=document.getElementById('jobsGrid');
-  g.innerHTML='<div class="no-jobs">Loading videos...</div>';
-  try{
-    const d=await(await fetch('/jobs')).json();
-    const videos = d.jobs?.filter(j => j.status !== 'script_only') || [];
-    if(!videos.length){g.innerHTML='<div class="no-jobs">No videos yet. Generate your first vernacular lesson!</div>';return;}
-    g.innerHTML=videos.map(j=>{
-      return `<div class="job-card">
-      <div class="jthumb">🎬</div>
-      <div class="jinfo">
-        <div class="jtitle">${j.title}<span class="jeng">${j.language || 'Santhali'}</span></div>
-        <div class="jmeta">${j.scene_count} scenes &nbsp;·&nbsp; ${new Date(j.created_at).toLocaleString('en-IN',{dateStyle:'medium',timeStyle:'short'})}</div>
-      </div>
-      <a href="${j.video_url}" target="_blank" class="jwatch">▶ Watch</a>
-    </div>`}).join('');
-  } catch(e){g.innerHTML='<div class="no-jobs">Could not load videos. Backend running?</div>';}
-}
-
-async function loadScripts(){
-  const g=document.getElementById('scriptsGrid');
-  g.innerHTML='<div class="no-jobs">Loading script documents...</div>';
-  try{
-    const d=await(await fetch('/jobs')).json();
-    const scripts = d.jobs?.filter(j => j.status === 'script_only') || [];
-    if(!scripts.length){g.innerHTML='<div class="no-jobs">No script plans yet. Create one!</div>';return;}
-    g.innerHTML=scripts.map(j=>{
-      return `<div class="job-card">
-      <div class="jthumb" style="background:#EBF4F0; color:var(--forest-green);">📄</div>
-      <div class="jinfo">
-        <div class="jtitle">${j.title}<span class="jeng">Pedagogy Plan</span></div>
-        <div class="jmeta">${j.scene_count} topics &nbsp;·&nbsp; ${new Date(j.created_at).toLocaleString('en-IN',{dateStyle:'medium',timeStyle:'short'})}</div>
-      </div>
-      <a href="${j.video_url}" target="_blank" class="jwatch">📄 Read Plan</a>
-    </div>`}).join('');
-  } catch(e){g.innerHTML='<div class="no-jobs">Could not load. Backend running?</div>';}
-}
-
-function copyUrl(){navigator.clipboard.writeText(vidUrl).then(()=>{const b=document.querySelector('.copy-btn');b.textContent='✅ Copied!';setTimeout(()=>b.textContent='📋 Copy Video URL',2000);});}
-function show(id){document.getElementById(id).classList.add('show');}
-function hide(id){document.getElementById(id).classList.remove('show');}
-function hideAll(){['progCard','result','err'].forEach(hide);}
-function disableAll(v){document.querySelectorAll('.btn-primary, .btn-outline').forEach(b=>b.disabled=v);}
-
-async function loadCredits() {
-  const grid = document.getElementById('creditsGrid');
-  grid.innerHTML = '<div style="color:var(--text-muted);text-align:center;padding:30px;">🔄 Checking AI APIs... (Gemini, Groq, Cerebras, OpenRouter)</div>';
-  try {
-    const d = await (await fetch('/credits')).json();
-    const colorMap = {
-      green: { bg: '#F0FDF4', border: '#86EFAC', badge: '#15803D', icon: '✅' },
-      orange: { bg: '#FFFBEB', border: '#FCD34D', badge: '#B45309', icon: '⚠️' },
-      red: { bg: '#FEF2F2', border: '#FCA5A5', badge: '#DC2626', icon: '❌' }
-    };
-    grid.innerHTML = d.credits.map(c => {
-      const col = colorMap[c.color] || colorMap.green;
-      const barHTML = c.pct != null ? `<div style="margin-top:8px;background:#E2E8F0;border-radius:99px;height:6px;overflow:hidden;"><div style="width:${c.pct}%;height:100%;background:${c.color==='green'?'#16A34A':c.color==='orange'?'#D97706':'#DC2626'};border-radius:99px;"></div></div><div style="font-size:11px;color:var(--text-muted);margin-top:4px;">${c.pct}% used</div>` : '';
-      return `<div style="background:${col.bg};border:1.5px solid ${col.border};border-radius:12px;padding:14px 18px;">
-        <div style="display:flex;justify-content:space-between;align-items:center;">
-          <div>
-            <div style="font-size:14.5px;font-weight:700;color:var(--text-primary);">${col.icon} ${c.name}</div>
-            <div style="font-size:12px;color:var(--text-secondary);margin-top:2px;">${c.info}</div>
-            ${barHTML}
-          </div>
-          <div style="text-align:right;flex-shrink:0;margin-left:16px;">
-            <div style="font-size:11px;color:var(--text-muted);font-weight:600;">LIMIT</div>
-            <div style="font-size:12.5px;color:${col.badge};font-weight:700;">${c.limit}</div>
-          </div>
-        </div>
-      </div>`;
-    }).join('');
-    grid.innerHTML += `<div style="color:var(--text-muted);font-size:11px;text-align:right;margin-top:4px;">Last verified: ${new Date(d.timestamp).toLocaleTimeString('en-IN')}</div>`;
-  } catch(e) {
-    grid.innerHTML = '<div style="color:#DC2626;text-align:center;padding:20px;">❌ Could not load AI credits.</div>';
-  }
-}
-
-// ── Summary & Study Tool Helpers ──────────────────────────────
-let _lastSummaryRawText = '';
-let _lastSummaryLang = 'Santhali';
-let _lastSummaryFromFile = false;
-let _lastSummaryFile = null;
-
-function showSummary(markdown, rawText, lang, fromFile, file) {
-  _lastSummaryRawText = rawText;
-  _lastSummaryLang = lang;
-  _lastSummaryFromFile = fromFile;
-  _lastSummaryFile = file;
-
-  let html = markdown
-    .replace(/^# (.+)/gm, '<h1 style="color:var(--forest-green);font-size:20px;margin-bottom:8px;">$1</h1>')
-    .replace(/^## (.+)/gm, '<h2 style="color:var(--forest-green);font-size:16px;margin:14px 0 6px;">$1</h2>')
-    .replace(/^### (.+)/gm, '<h3 style="color:#EA580C;font-size:14px;margin:10px 0 4px;">$1</h3>')
-    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
-    .replace(/`([^`]+)`/g, '<code style="background:#E2ECE8;padding:2px 6px;border-radius:4px;">$1</code>')
-    .replace(/^---$/gm, '<hr style="border-color:#E2ECE8;margin:14px 0;">')
-    .replace(/^> (.+)/gm, '<blockquote style="border-left:3px solid var(--forest-green);padding-left:10px;color:var(--text-secondary);margin:8px 0;">$1</blockquote>')
-    .replace(/\n/g, '<br>');
-
-  document.getElementById('sumContent').innerHTML = html;
-  document.getElementById('sumOverlay').classList.add('show');
-}
-
-function closeSummary() { document.getElementById('sumOverlay').classList.remove('show'); }
-
-async function copyMarkdown() {
-  const text = document.getElementById('sumContent').innerText;
-  await navigator.clipboard.writeText(text).catch(()=>{});
-  const btn = document.querySelector('.sum-modal .btn-outline');
-  btn.textContent = '✅ Copied!';
-  setTimeout(()=>btn.textContent='📋 Copy', 2000);
-}
-
-async function convertSummaryToVideo() {
-  closeSummary();
-  if (_lastSummaryFromFile && _lastSummaryFile) {
-    const form = new FormData();
-    form.append('file', _lastSummaryFile);
-    form.append('script_language', _lastSummaryLang);
-    await run(() => fetch('/generate-from-file', { method: 'POST', body: form }));
-  } else {
-    await run(() => fetch('/generate', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ raw_text: _lastSummaryRawText, script_language: _lastSummaryLang })
-    }));
-  }
-}
-
-async function getSummaryFromFile() {
-  const f = document.getElementById('fi').files[0]; if (!f) return;
-  const lang = document.getElementById('langSelect').value;
-  const btn = document.getElementById('summaryBtnFile');
-  btn.textContent = '⏳ Preparing...'; btn.disabled = true;
-  const form = new FormData(); form.append('file', f); form.append('script_language', lang);
-  try {
-    const res = await fetch('/generate-script-from-file', { method: 'POST', body: form });
-    const d = await res.json();
-    if (!d.success) throw new Error(d.error || 'Failed');
-    showSummary(d.markdown, '', lang, true, f);
   } catch (e) {
-    alert('❌ Summary failed: ' + e.message);
-  } finally {
-    btn.textContent = '📋 Pedagogy Plan'; btn.disabled = false;
-  }
-}
-
-async function getSummaryFromText() {
-  const t = document.getElementById('rawText').value.trim();
-  const lang = document.getElementById('langSelect2').value;
-  if (t.length < 10) { alert('At least 10 characters needed.'); return; }
-  const btn = document.getElementById('summaryBtnText');
-  btn.textContent = '⏳ Preparing...'; btn.disabled = true;
-  try {
-    const res = await fetch('/generate-script', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ raw_text: t, script_language: lang })
-    });
-    const d = await res.json();
-    if (!d.success) throw new Error(d.error || 'Failed');
-    showSummary(d.markdown, t, lang, false, null);
-  } catch (e) {
-    alert('❌ Summary failed: ' + e.message);
-  } finally {
-    btn.textContent = '📋 Pedagogy Plan'; btn.disabled = false;
-  }
-}
-
-// ── Flashcards & Worksheet Modals ─────────────────────────────
-let _fcCards = [];
-let _fcIdx = 0;
-let _fcFlipped = false;
-
-function closeStudyModal() { document.getElementById('studyModalOverlay').classList.remove('show'); }
-
-function showStudyModalLoading(title, language) {
-  document.getElementById('studyModalTitle').innerHTML = title;
-  document.getElementById('studyModalMeta').textContent = `Language: ${language} · Generating authentic ShikshaSetu FLN material...`;
-  document.getElementById('studyModalBody').innerHTML = `
-    <div style="text-align:center; padding:50px 20px;">
-      <div style="display:inline-block; width:36px; height:36px; border:3px solid #E2ECE8; border-top-color:var(--forest-green); border-radius:50%; animation:spin 1s linear infinite; margin-bottom:14px;"></div>
-      <div style="font-size:16px; font-weight:700; color:var(--forest-green);">Generating bilingual content in ${language}...</div>
-      <div style="font-size:13px; color:var(--text-muted); margin-top:6px;">Infusing local pedagogy, Ol Chiki / native script, and practical examples</div>
-    </div>
-  `;
-  document.getElementById('studyPrintBtn').style.display = 'none';
-  document.getElementById('studyModalOverlay').classList.add('show');
-}
-
-function renderStudyModalFlashcards(fcData, language) {
-  _fcCards = fcData.cards || [];
-  _fcIdx = 0;
-  _fcFlipped = false;
-  document.getElementById('studyModalTitle').innerHTML = `🃏 ${fcData.title || 'Flashcards'} (${fcData.total || _fcCards.length} cards)`;
-  document.getElementById('studyModalMeta').textContent = `Language: ${language} · 100% Native Script · Click card to flip`;
-  document.getElementById('studyPrintBtn').style.display = 'none';
-
-  const body = document.getElementById('studyModalBody');
-  body.innerHTML = `
-    <div class="fc-flip-wrap" onclick="flipStudyCard()">
-      <div class="fc-card" id="mainFcCard">
-        <div>
-          <div style="display:flex; justify-content:space-between; align-items:center;">
-            <span class="fc-badge" id="fcBadgeSide">QUESTION</span>
-            <span style="font-size:12px; color:var(--text-muted);" id="fcCategoryBadge">Concept</span>
-          </div>
-          <div class="fc-content" id="fcContentText"></div>
-        </div>
-        <div style="display:flex; justify-content:space-between; align-items:center; font-size:12px; color:var(--text-muted);">
-          <span id="fcCardCount">Card 1 of ${_fcCards.length}</span>
-          <span id="fcDifficultyBadge" style="padding:2px 8px; border-radius:10px; font-weight:700; background:#E0F2FE; color:#0369A1;">Easy</span>
-        </div>
-      </div>
-    </div>
-    <div style="text-align:center; font-size:12px; color:var(--text-muted); margin-top:-6px;">👆 Tap card to flip between Question &amp; Answer</div>
-    <div class="fc-controls">
-      <button class="fc-btn" onclick="navStudyCard(-1)">← Previous</button>
-      <button class="fc-btn" onclick="shuffleStudyCards()">🔀 Shuffle</button>
-      <button class="fc-btn" onclick="navStudyCard(1)">Next →</button>
-    </div>
-    <div style="margin-top:24px;">
-      <div style="font-size:13px; font-weight:700; color:var(--forest-green); margin-bottom:10px;">📋 Card Overview:</div>
-      <div class="fc-grid-view">
-        ${_fcCards.map((c, i) => `
-          <div class="fc-grid-item" onclick="jumpStudyCard(${i})">
-            <div style="font-size:11px; color:var(--forest-green); font-weight:700; margin-bottom:4px;">#${i + 1} · ${c.category || 'Topic'}</div>
-            <div style="font-size:12.5px; color:var(--text-primary); font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${c.front}</div>
-          </div>
-        `).join('')}
-      </div>
-    </div>
-  `;
-  updateStudyCardUI();
-}
-
-function updateStudyCardUI() {
-  if (!_fcCards.length) return;
-  const c = _fcCards[_fcIdx];
-  const card = document.getElementById('mainFcCard');
-  const badgeSide = document.getElementById('fcBadgeSide');
-  const content = document.getElementById('fcContentText');
-  const cat = document.getElementById('fcCategoryBadge');
-  const count = document.getElementById('fcCardCount');
-  const diff = document.getElementById('fcDifficultyBadge');
-
-  if (!card) return;
-  card.classList.toggle('flipped', _fcFlipped);
-  badgeSide.textContent = _fcFlipped ? 'ANSWER ✅' : 'QUESTION ❓';
-  badgeSide.style.color = _fcFlipped ? '#15803D' : 'var(--forest-green)';
-  badgeSide.style.background = _fcFlipped ? '#DCFCE7' : 'var(--mint)';
-  content.textContent = _fcFlipped ? c.back : c.front;
-  cat.textContent = c.category || 'Topic';
-  count.textContent = `Card ${_fcIdx + 1} of ${_fcCards.length}`;
-  diff.textContent = c.difficulty || 'FLN Foundation';
-}
-
-function flipStudyCard() { _fcFlipped = !_fcFlipped; updateStudyCardUI(); }
-function navStudyCard(dir) { _fcIdx = (_fcIdx + dir + _fcCards.length) % _fcCards.length; _fcFlipped = false; updateStudyCardUI(); }
-function jumpStudyCard(i) { _fcIdx = i; _fcFlipped = false; updateStudyCardUI(); }
-function shuffleStudyCards() { _fcCards = _fcCards.sort(() => Math.random() - 0.5); _fcIdx = 0; _fcFlipped = false; updateStudyCardUI(); }
-
-function renderStudyModalWorksheet(ws, language) {
-  document.getElementById('studyModalTitle').innerHTML = `📝 ${ws.title || 'FLN Worksheet'} <span style="font-size:13px; color:var(--text-muted);">(${ws.subject || 'Subject'})</span>`;
-  document.getElementById('studyModalMeta').textContent = `Language: ${language} · ${ws.instructions || 'Bilingual FLN Exercise'}`;
-  document.getElementById('studyPrintBtn').style.display = 'inline-block';
-
-  const icons = { mcq: '🔘', fill_blank: '✏️', short_answer: '📝', true_false: '✅', long_answer: '📖' };
-  const sectionsHTML = (ws.sections || []).map(sec => {
-    const qHTML = (sec.questions || []).map(q => {
-      let opts = '';
-      if (sec.type === 'mcq' && q.options) {
-        opts = `<div class="ws-opts">${q.options.map(o => `<div class="ws-opt">${o}</div>`).join('')}</div>`;
-      }
-      return `
-        <div class="ws-q-item">
-          <div class="ws-q-txt"><span style="color:var(--forest-green);">Q${q.id || ''}.</span> ${q.question}</div>
-          ${opts}
-          <button class="ws-ans-toggle" onclick="this.nextElementSibling.classList.toggle('show')">Show Answer 👁️</button>
-          <div class="ws-ans">✅ ${q.answer}</div>
-        </div>
-      `;
-    }).join('');
-
-    return `
-      <div class="ws-sec">
-        <div class="ws-sec-title">${icons[sec.type] || '📌'} ${sec.title}</div>
-        ${qHTML}
-      </div>
-    `;
-  }).join('');
-
-  document.getElementById('studyModalBody').innerHTML = `
-    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;">
-      <div style="font-size:13px; color:var(--text-muted);">${(ws.sections || []).reduce((a, s) => a + (s.questions?.length || 0), 0)} Total Questions</div>
-      <button class="fc-btn" onclick="document.querySelectorAll('.ws-ans').forEach(el => el.classList.toggle('show'))">👁️ Toggle All Answers</button>
-    </div>
-    ${sectionsHTML}
-  `;
-}
-
-async function genFlashcardsFromFile() {
-  const f = document.getElementById('fi').files[0]; if (!f) return;
-  const lang = document.getElementById('langSelect').value;
-  showStudyModalLoading(`🃏 Generating Flashcards in ${lang}...`, lang);
-  const form = new FormData(); form.append('file', f); form.append('language', lang);
-  try {
-    const res = await fetch('/flashcards-from-file', { method: 'POST', body: form });
-    const d = await res.json();
-    if (!d.success) throw new Error(d.error || 'Failed');
-    renderStudyModalFlashcards(d.flashcards, lang);
-  } catch (e) {
-    document.getElementById('studyModalBody').innerHTML = `<div style="color:#DC2626; text-align:center; padding:30px;">❌ Error: ${e.message}</div>`;
-  }
-}
-
-async function genWorksheetFromFile() {
-  const f = document.getElementById('fi').files[0]; if (!f) return;
-  const lang = document.getElementById('langSelect').value;
-  showStudyModalLoading(`📝 Generating Worksheet in ${lang}...`, lang);
-  const form = new FormData(); form.append('file', f); form.append('language', lang);
-  try {
-    const res = await fetch('/worksheet-from-file', { method: 'POST', body: form });
-    const d = await res.json();
-    if (!d.success) throw new Error(d.error || 'Failed');
-    renderStudyModalWorksheet(d.worksheet, lang);
-  } catch (e) {
-    document.getElementById('studyModalBody').innerHTML = `<div style="color:#DC2626; text-align:center; padding:30px;">❌ Error: ${e.message}</div>`;
-  }
-}
-
-async function genFlashcardsFromText() {
-  const t = document.getElementById('rawText').value.trim();
-  const lang = document.getElementById('langSelect2').value;
-  if (t.length < 10) { alert('Please enter at least 10 characters.'); return; }
-  showStudyModalLoading(`🃏 Generating Flashcards in ${lang}...`, lang);
-  try {
-    const res = await fetch('/flashcards', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ raw_text: t, language: lang })
-    });
-    const d = await res.json();
-    if (!d.success) throw new Error(d.error || 'Failed');
-    renderStudyModalFlashcards(d.flashcards, lang);
-  } catch (e) {
-    document.getElementById('studyModalBody').innerHTML = `<div style="color:#DC2626; text-align:center; padding:30px;">❌ Error: ${e.message}</div>`;
-  }
-}
-
-async function genWorksheetFromText() {
-  const t = document.getElementById('rawText').value.trim();
-  const lang = document.getElementById('langSelect2').value;
-  if (t.length < 10) { alert('Please enter at least 10 characters.'); return; }
-  showStudyModalLoading(`📝 Generating Worksheet in ${lang}...`, lang);
-  try {
-    const res = await fetch('/worksheet', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ raw_text: t, language: lang })
-    });
-    const d = await res.json();
-    if (!d.success) throw new Error(d.error || 'Failed');
-    renderStudyModalWorksheet(d.worksheet, lang);
-  } catch (e) {
-    document.getElementById('studyModalBody').innerHTML = `<div style="color:#DC2626; text-align:center; padding:30px;">❌ Error: ${e.message}</div>`;
-  }
-}
-
-async function genFlashcardsFromResult() {
-  if (!_currentJob) return;
-  const lang = _currentJob.language || 'Santhali';
-  showStudyModalLoading(`🃏 Generating Flashcards in ${lang}...`, lang);
-  try {
-    let textToUse = _currentJob.title;
-    try {
-      const r = await fetch(`/script/${_currentJob.job_id}/markdown`);
-      if (r.ok) textToUse = await r.text();
-    } catch (_) {}
-    const res = await fetch('/flashcards', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ raw_text: textToUse, language: lang })
-    });
-    const d = await res.json();
-    if (!d.success) throw new Error(d.error || 'Failed');
-    renderStudyModalFlashcards(d.flashcards, lang);
-  } catch (e) {
-    document.getElementById('studyModalBody').innerHTML = `<div style="color:#DC2626; text-align:center; padding:30px;">❌ Error: ${e.message}</div>`;
-  }
-}
-
-async function genWorksheetFromResult() {
-  if (!_currentJob) return;
-  const lang = _currentJob.language || 'Santhali';
-  showStudyModalLoading(`📝 Generating Worksheet in ${lang}...`, lang);
-  try {
-    let textToUse = _currentJob.title;
-    try {
-      const r = await fetch(`/script/${_currentJob.job_id}/markdown`);
-      if (r.ok) textToUse = await r.text();
-    } catch (_) {}
-    const res = await fetch('/worksheet', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ raw_text: textToUse, language: lang })
-    });
-    const d = await res.json();
-    if (!d.success) throw new Error(d.error || 'Failed');
-    renderStudyModalWorksheet(d.worksheet, lang);
-  } catch (e) {
-    document.getElementById('studyModalBody').innerHTML = `<div style="color:#DC2626; text-align:center; padding:30px;">❌ Error: ${e.message}</div>`;
+    alert('Error: ' + e.message);
+    isGenerating = false;
+    document.getElementById('btnGen').disabled = false;
   }
 }
 </script>
