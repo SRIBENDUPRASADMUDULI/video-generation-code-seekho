@@ -3,9 +3,9 @@ import { useCurrentFrame, useVideoConfig, spring, interpolate, Video, staticFile
 import { IndianAvatarFace } from '../scenes/AvatarScene';
 
 /**
- * PipTeacherCam — Floating Picture-in-Picture Teacher Camera
- * Renders on all content scenes (code, explainer, comparison, flowchart, visual)
- * giving life and continuous teacher presence throughout the entire video.
+ * PipTeacherCam — ShikshaSetu Picture-in-Picture Teacher Camera
+ * Renders on all content scenes giving continuous teacher presence
+ * styled with the clean, bright ShikshaSetu studio dock.
  */
 export function PipTeacherCam({
   audioDuration = 10,
@@ -38,7 +38,7 @@ export function PipTeacherCam({
     : isSpeaking;
 
   // Gentle breathing float
-  const floatY = Math.sin(frame * 0.06) * 3;
+  const floatY = Math.sin(frame * 0.06) * 2.5;
 
   // Positioning styles
   const posStyle = position === 'top-right'
@@ -59,16 +59,16 @@ export function PipTeacherCam({
         alignItems: 'center',
       }}
     >
-      {/* Outer Glowing Glass Card */}
+      {/* Outer ShikshaSetu Dock Card */}
       <div
         style={{
-          background: 'linear-gradient(145deg, rgba(23, 13, 56, 0.85) 0%, rgba(9, 5, 24, 0.95) 100%)',
+          background: 'rgba(255, 255, 255, 0.96)',
           backdropFilter: 'blur(16px)',
-          border: '2px solid rgba(167, 139, 250, 0.55)',
-          borderRadius: 20,
+          border: '2px solid #D1E3DA',
+          borderRadius: 22,
           padding: '10px 14px 12px 14px',
           boxShadow:
-            '0 12px 36px rgba(0, 0, 0, 0.6), 0 0 24px rgba(124, 58, 237, 0.35), inset 0 1px 1px rgba(255, 255, 255, 0.2)',
+            '0 14px 38px rgba(19, 78, 63, 0.12), 0 2px 8px rgba(0, 0, 0, 0.04)',
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
@@ -92,10 +92,10 @@ export function PipTeacherCam({
                 width: 7,
                 height: 7,
                 borderRadius: '50%',
-                backgroundColor: isSpeaking ? '#22c55e' : '#a855f7',
+                backgroundColor: isSpeaking ? '#10B981' : '#134E3F',
                 boxShadow: isSpeaking
-                  ? '0 0 8px #22c55e, 0 0 14px #22c55e'
-                  : '0 0 6px #a855f7',
+                  ? '0 0 8px #10B981, 0 0 12px #10B981'
+                  : 'none',
               }}
             />
             <span
@@ -103,27 +103,27 @@ export function PipTeacherCam({
                 fontFamily: '"Plus Jakarta Sans", "Segoe UI", sans-serif',
                 fontSize: 10,
                 fontWeight: 800,
-                letterSpacing: 1.2,
-                color: isSpeaking ? '#86efac' : '#c4b5fd',
+                letterSpacing: 1.1,
+                color: isSpeaking ? '#15803D' : '#134E3F',
                 textTransform: 'uppercase',
               }}
             >
-              {isSpeaking ? 'TEACHING' : 'AI TUTOR'}
+              {isSpeaking ? 'TEACHING' : 'FLN TUTOR'}
             </span>
           </div>
 
           <span
             style={{
               fontSize: 9,
-              fontWeight: 700,
-              color: '#93c5fd',
-              background: 'rgba(59, 130, 246, 0.2)',
-              border: '1px solid rgba(59, 130, 246, 0.35)',
+              fontWeight: 800,
+              color: '#15803D',
+              background: '#DCFCE7',
+              border: '1px solid #86EFAC',
               borderRadius: 6,
-              padding: '1px 5px',
+              padding: '1px 6px',
             }}
           >
-            HD
+            LIVE HD
           </span>
         </div>
 
@@ -132,10 +132,10 @@ export function PipTeacherCam({
           style={{
             width: 140,
             height: 155,
-            borderRadius: 14,
+            borderRadius: 15,
             overflow: 'hidden',
-            background: 'radial-gradient(circle at 50% 30%, #1e1b4b 0%, #0a061a 100%)',
-            border: '1px solid rgba(139, 92, 246, 0.35)',
+            background: 'linear-gradient(135deg, #F8FAF9 0%, #EBF4F0 100%)',
+            border: '1.5px solid #D1E3DA',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
@@ -182,9 +182,9 @@ export function PipTeacherCam({
                   height: barHeight,
                   borderRadius: 2,
                   background: isSpeaking
-                    ? 'linear-gradient(180deg, #38bdf8 0%, #a855f7 100%)'
-                    : 'rgba(167, 139, 250, 0.3)',
-                  boxShadow: isSpeaking ? '0 0 6px rgba(56, 189, 248, 0.7)' : 'none',
+                    ? 'linear-gradient(180deg, #10B981 0%, #134E3F 100%)'
+                    : 'rgba(19, 78, 63, 0.25)',
+                  boxShadow: isSpeaking ? '0 0 6px rgba(16, 185, 129, 0.6)' : 'none',
                   transition: 'height 0.05s ease',
                 }}
               />

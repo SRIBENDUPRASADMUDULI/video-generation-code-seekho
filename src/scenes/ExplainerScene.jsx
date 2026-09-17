@@ -3,10 +3,10 @@ import { useCurrentFrame, useVideoConfig, spring, interpolate } from 'remotion';
 import { SubtitleBar } from './AvatarScene';
 
 /**
- * ExplainerScene — Cinematic Glassmorphism Educational Card with Concept Radar
+ * ExplainerScene — ShikshaSetu Pedagogical Card with Concept Radar
  * Features:
- * - Left: Staggered glassmorphic bullet cards with golden keyword highlights
- * - Right: Interactive Holographic Concept Radar with orbiting nodes & pulse beacons
+ * - Left: Staggered white pedagogical cards with saffron keyword highlights
+ * - Right: ShikshaSetu Concept Radar with concentric rings & orbiting nodes
  * - Full indigenous language font support ('Noto Sans Ol Chiki' for Santhali)
  */
 export function ExplainerScene({
@@ -21,8 +21,8 @@ export function ExplainerScene({
 
   const totalFrames = Math.max(Math.round(audioDuration * fps), 300);
 
-  // Cinematic slow camera dolly
-  const dollyScale = interpolate(frame, [0, totalFrames], [1, 1.025], {
+  // Gentle camera zoom
+  const dollyScale = interpolate(frame, [0, totalFrames], [1, 1.02], {
     extrapolateRight: 'clamp',
   });
 
@@ -33,17 +33,17 @@ export function ExplainerScene({
     config: { damping: 13, stiffness: 100, mass: 0.8 },
   });
   const headingOpacity = interpolate(headingSpring, [0, 1], [0, 1]);
-  const headingY = interpolate(headingSpring, [0, 1], [-25, 0]);
+  const headingY = interpolate(headingSpring, [0, 1], [-20, 0]);
 
   // Underline animation
-  const underlineWidth = interpolate(frame, [8, 32], [0, 160], {
+  const underlineWidth = interpolate(frame, [8, 32], [0, 140], {
     extrapolateLeft: 'clamp',
     extrapolateRight: 'clamp',
   });
 
   // Orbital rotation for the concept radar
-  const radarRotation = frame * 0.7;
-  const radarPulse = Math.sin(frame * 0.08) * 4;
+  const radarRotation = frame * 0.6;
+  const radarPulse = Math.sin(frame * 0.08) * 3;
 
   // Active concept tracking based on frame progression
   const activeBulletIdx = Math.min(
@@ -57,13 +57,12 @@ export function ExplainerScene({
         flex: 1,
         width: '100%',
         height: '100%',
-        backgroundColor: '#060412',
+        backgroundColor: '#F4F7F5',
         backgroundImage: `
-          radial-gradient(ellipse at 15% 20%, rgba(99, 102, 241, 0.18) 0%, transparent 55%),
-          radial-gradient(ellipse at 85% 75%, rgba(168, 85, 247, 0.18) 0%, transparent 55%),
-          radial-gradient(ellipse at 50% 50%, rgba(14, 165, 233, 0.08) 0%, transparent 60%)
+          radial-gradient(ellipse at 15% 20%, rgba(19, 78, 63, 0.08) 0%, transparent 55%),
+          radial-gradient(ellipse at 85% 75%, rgba(234, 88, 12, 0.06) 0%, transparent 55%)
         `,
-        color: '#fff',
+        color: '#111827',
         padding: '38px 60px 85px 60px',
         display: 'flex',
         flexDirection: 'column',
@@ -74,13 +73,13 @@ export function ExplainerScene({
         transform: `scale(${dollyScale})`,
       }}
     >
-      {/* Background animated micro-grid */}
+      {/* Background pedagogical grid */}
       <div
         style={{
           position: 'absolute',
           inset: 0,
           backgroundImage:
-            'linear-gradient(rgba(147, 197, 253, 0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(147, 197, 253, 0.035) 1px, transparent 1px)',
+            'linear-gradient(rgba(19, 78, 63, 0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(19, 78, 63, 0.035) 1px, transparent 1px)',
           backgroundSize: '46px 46px',
           pointerEvents: 'none',
         }}
@@ -95,31 +94,31 @@ export function ExplainerScene({
           zIndex: 10,
         }}
       >
-        {/* Floating Category Pill */}
+        {/* Category Pill */}
         <div
           style={{
             display: 'inline-flex',
             alignItems: 'center',
             gap: 8,
-            padding: '4px 16px',
-            background: 'linear-gradient(135deg, rgba(99, 102, 241, 0.25), rgba(168, 85, 247, 0.2))',
-            border: '1px solid rgba(167, 139, 250, 0.5)',
+            padding: '5px 16px',
+            background: '#EBF4F0',
+            border: '1.5px solid #D1E3DA',
             borderRadius: 999,
             marginBottom: 10,
-            boxShadow: '0 0 16px rgba(124, 58, 237, 0.3)',
+            marginLeft: 175,
           }}
         >
-          <span style={{ fontSize: 13, color: '#facc15' }}>✦</span>
+          <span style={{ fontSize: 13, color: '#EA580C' }}>✦</span>
           <span
             style={{
               fontSize: 12,
               fontWeight: 800,
-              letterSpacing: 2,
-              color: '#e0e7ff',
+              letterSpacing: 1.5,
+              color: '#134E3F',
               textTransform: 'uppercase',
             }}
           >
-            CONCEPT EXPLAINER
+            SHIKSHASETU CONCEPT EXPLAINER
           </span>
         </div>
 
@@ -130,30 +129,27 @@ export function ExplainerScene({
             fontWeight: 800,
             margin: '0 0 8px 0',
             letterSpacing: '-0.01em',
-            background: 'linear-gradient(135deg, #ffffff 0%, #e0e7ff 50%, #c4b5fd 100%)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            textShadow: '0 0 30px rgba(167, 139, 250, 0.3)',
+            color: '#134E3F',
             lineHeight: 1.25,
           }}
         >
           {heading}
         </h1>
 
-        {/* Animated Underline */}
+        {/* Animated Saffron Underline */}
         <div
           style={{
             height: 4,
             width: underlineWidth,
             borderRadius: 4,
-            background: 'linear-gradient(90deg, #6366f1 0%, #a855f7 50%, #38bdf8 100%)',
-            boxShadow: '0 0 12px rgba(168, 85, 247, 0.8)',
+            background: 'linear-gradient(90deg, #EA580C 0%, #F97316 100%)',
+            boxShadow: '0 2px 8px rgba(234, 88, 12, 0.35)',
           }}
         />
       </div>
 
-      {/* Main Body: Left Bullets (62%) + Right Concept Radar (38%) */}
-      <div style={{ display: 'flex', gap: 30, flex: 1, zIndex: 10, alignItems: 'center' }}>
+      {/* Main Body: Left Bullets (63%) + Right Concept Radar (37%) */}
+      <div style={{ display: 'flex', gap: 32, flex: 1, zIndex: 10, alignItems: 'center' }}>
         {/* Left Bullet Points */}
         <div
           style={{
@@ -171,7 +167,7 @@ export function ExplainerScene({
               fps,
               config: { damping: 14, stiffness: 100, mass: 0.7 },
             });
-            const slideX = interpolate(slideProgress, [0, 1], [-45, 0]);
+            const slideX = interpolate(slideProgress, [0, 1], [-35, 0]);
             const slideOpacity = interpolate(slideProgress, [0, 1], [0, 1]);
 
             // Highlight terms replacement
@@ -184,20 +180,14 @@ export function ExplainerScene({
                   const regex = new RegExp(`(${escaped})`, 'gi');
                   processedHtml = processedHtml.replace(
                     regex,
-                    '<span style="color:#fef08a; background:rgba(234,179,8,0.22); padding:2px 8px; border-radius:6px; font-weight:800; border:1px solid rgba(250,204,21,0.5); text-shadow:0 0 10px rgba(250,204,21,0.5);">$1</span>'
+                    '<span style="color:#C2410C; background:#FFF7ED; padding:2px 8px; border-radius:6px; font-weight:800; border:1px solid #FDBA74;">$1</span>'
                   );
                 } catch (_) {}
               });
             }
 
             const isCurrent = i === activeBulletIdx;
-            const colors = [
-              { border: '#8b5cf6', badge: 'linear-gradient(135deg, #7c3aed, #6366f1)' },
-              { border: '#06b6d4', badge: 'linear-gradient(135deg, #0891b2, #0284c7)' },
-              { border: '#10b981', badge: 'linear-gradient(135deg, #059669, #10b981)' },
-              { border: '#f59e0b', badge: 'linear-gradient(135deg, #d97706, #f59e0b)' },
-            ];
-            const colorTheme = colors[i % colors.length];
+            const borderAccent = isCurrent ? '#EA580C' : '#134E3F';
 
             return (
               <div
@@ -208,17 +198,14 @@ export function ExplainerScene({
                   gap: '16px',
                   opacity: slideOpacity,
                   transform: `translateX(${slideX}px) scale(${isCurrent ? 1.02 : 1})`,
-                  background: isCurrent
-                    ? 'linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(30, 27, 75, 0.4) 100%)'
-                    : 'linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.015) 100%)',
-                  backdropFilter: 'blur(12px)',
-                  padding: '13px 20px',
-                  borderRadius: '15px',
-                  border: `1.5px solid ${isCurrent ? colorTheme.border : 'rgba(255, 255, 255, 0.08)'}`,
-                  borderLeft: `5px solid ${colorTheme.border}`,
+                  background: isCurrent ? '#FFFFFF' : 'rgba(255, 255, 255, 0.92)',
+                  padding: '14px 22px',
+                  borderRadius: '16px',
+                  border: `1.5px solid ${isCurrent ? '#EA580C' : '#D1E3DA'}`,
+                  borderLeft: `5px solid ${borderAccent}`,
                   boxShadow: isCurrent
-                    ? `0 8px 24px rgba(0, 0, 0, 0.4), 0 0 20px ${colorTheme.border}44`
-                    : '0 6px 18px rgba(0, 0, 0, 0.3)',
+                    ? '0 10px 30px rgba(19, 78, 63, 0.12), 0 2px 6px rgba(0,0,0,0.04)'
+                    : '0 4px 14px rgba(19, 78, 63, 0.05)',
                   transition: 'all 0.15s ease',
                 }}
               >
@@ -227,16 +214,16 @@ export function ExplainerScene({
                   style={{
                     width: 34,
                     height: 34,
-                    borderRadius: 9,
-                    background: colorTheme.badge,
+                    borderRadius: 10,
+                    background: isCurrent ? '#EA580C' : '#134E3F',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
                     fontSize: 14,
                     fontWeight: 800,
-                    color: '#ffffff',
-                    boxShadow: `0 0 12px ${colorTheme.border}66`,
+                    color: '#FFFFFF',
                     flexShrink: 0,
+                    boxShadow: '0 2px 8px rgba(19, 78, 63, 0.15)',
                   }}
                 >
                   0{i + 1}
@@ -247,8 +234,8 @@ export function ExplainerScene({
                   style={{
                     fontSize: '20px',
                     lineHeight: 1.45,
-                    color: '#f8fafc',
-                    fontWeight: 500,
+                    color: '#1F2937',
+                    fontWeight: isCurrent ? 600 : 500,
                   }}
                   dangerouslySetInnerHTML={{ __html: processedHtml }}
                 />
@@ -257,7 +244,7 @@ export function ExplainerScene({
           })}
         </div>
 
-        {/* Right Side: Animated Concept Radar & Orbit Network */}
+        {/* Right Side: ShikshaSetu Animated Concept Radar */}
         <div
           style={{
             width: '35%',
@@ -266,10 +253,10 @@ export function ExplainerScene({
             alignItems: 'center',
             justifyContent: 'center',
             position: 'relative',
-            transform: 'translateY(-35px)',
+            transform: 'translateY(-20px)',
           }}
         >
-          {/* Holographic Radar Canvas */}
+          {/* Radar Canvas */}
           <div
             style={{
               width: 260,
@@ -280,7 +267,7 @@ export function ExplainerScene({
               justifyContent: 'center',
             }}
           >
-            {/* Outer Rotating Cyber Grid Ring */}
+            {/* Outer Rotating Grid Rings */}
             <svg
               width="260"
               height="260"
@@ -295,7 +282,7 @@ export function ExplainerScene({
                 cy="130"
                 r="115"
                 fill="none"
-                stroke="rgba(124, 58, 237, 0.3)"
+                stroke="rgba(19, 78, 63, 0.25)"
                 strokeWidth="1.5"
                 strokeDasharray="8 6"
               />
@@ -304,24 +291,24 @@ export function ExplainerScene({
                 cy="130"
                 r="85"
                 fill="none"
-                stroke="rgba(56, 189, 248, 0.25)"
+                stroke="rgba(16, 185, 129, 0.3)"
                 strokeWidth="1"
                 strokeDasharray="4 4"
               />
               {/* Radial crosshairs */}
-              <line x1="130" y1="10" x2="130" y2="250" stroke="rgba(255,255,255,0.08)" strokeWidth="1" />
-              <line x1="10" y1="130" x2="250" y2="130" stroke="rgba(255,255,255,0.08)" strokeWidth="1" />
+              <line x1="130" y1="10" x2="130" y2="250" stroke="rgba(19,78,63,0.1)" strokeWidth="1" />
+              <line x1="10" y1="130" x2="250" y2="130" stroke="rgba(19,78,63,0.1)" strokeWidth="1" />
             </svg>
 
             {/* Pulsing Central Core */}
             <div
               style={{
-                width: 72 + radarPulse,
-                height: 72 + radarPulse,
+                width: 74 + radarPulse,
+                height: 74 + radarPulse,
                 borderRadius: '50%',
-                background: 'radial-gradient(circle, #7c3aed 0%, #4338ca 70%, #1e1b4b 100%)',
-                border: '2px solid #a78bfa',
-                boxShadow: '0 0 24px rgba(124, 58, 237, 0.8), 0 0 40px rgba(56, 189, 248, 0.4)',
+                background: 'linear-gradient(135deg, #134E3F 0%, #0F3E33 100%)',
+                border: '2px solid #86EFAC',
+                boxShadow: '0 8px 24px rgba(19, 78, 63, 0.35)',
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
@@ -329,18 +316,18 @@ export function ExplainerScene({
                 zIndex: 10,
               }}
             >
-              <span style={{ fontSize: 20 }}>🧠</span>
-              <span style={{ fontSize: 8, fontWeight: 800, color: '#e0e7ff', letterSpacing: 1 }}>
-                LOGIC
+              <span style={{ fontSize: 20 }}>🌿</span>
+              <span style={{ fontSize: 9, fontWeight: 800, color: '#FFFFFF', letterSpacing: 1 }}>
+                FLN CORE
               </span>
             </div>
 
             {/* 4 Orbiting Concept Nodes */}
             {[
-              { label: 'Rules', icon: '✦', color: '#8b5cf6', angle: 0 },
-              { label: 'Flow', icon: '⚡', color: '#06b6d4', angle: 90 },
-              { label: 'Data', icon: '🔄', color: '#10b981', angle: 180 },
-              { label: 'Scope', icon: '🎯', color: '#f59e0b', angle: 270 },
+              { label: 'Rules', icon: '✦', color: '#134E3F', angle: 0 },
+              { label: 'Flow', icon: '⚡', color: '#EA580C', angle: 90 },
+              { label: 'Data', icon: '🔄', color: '#10B981', angle: 180 },
+              { label: 'Scope', icon: '🎯', color: '#0284C7', angle: 270 },
             ].map((node, i) => {
               const rad = ((node.angle + frame * 0.4) * Math.PI) / 180;
               const radius = 95;
@@ -358,15 +345,15 @@ export function ExplainerScene({
                     width: 40,
                     height: 40,
                     borderRadius: '50%',
-                    background: isActive ? node.color : 'rgba(15, 12, 35, 0.85)',
+                    background: isActive ? node.color : '#FFFFFF',
                     border: `2px solid ${node.color}`,
                     boxShadow: isActive
-                      ? `0 0 20px ${node.color}, 0 0 35px ${node.color}aa`
-                      : `0 0 8px ${node.color}55`,
+                      ? `0 6px 18px rgba(19,78,63,0.25)`
+                      : `0 2px 8px rgba(0,0,0,0.06)`,
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    color: '#ffffff',
+                    color: isActive ? '#FFFFFF' : node.color,
                     fontSize: 16,
                     fontWeight: 800,
                     transform: `scale(${isActive ? 1.25 : 1})`,
@@ -380,31 +367,32 @@ export function ExplainerScene({
             })}
           </div>
 
-          {/* Animated Concept Progress Gauge */}
+          {/* Animated Progress Gauge */}
           <div
             style={{
               width: '85%',
-              background: 'rgba(15, 12, 35, 0.75)',
-              border: '1px solid rgba(167, 139, 250, 0.3)',
-              borderRadius: 12,
-              padding: '8px 14px',
-              marginTop: 10,
+              background: '#FFFFFF',
+              border: '1px solid #D1E3DA',
+              borderRadius: 14,
+              padding: '10px 16px',
+              marginTop: 12,
               display: 'flex',
               flexDirection: 'column',
-              gap: 5,
+              gap: 6,
+              boxShadow: '0 4px 14px rgba(19, 78, 63, 0.05)',
             }}
           >
-            <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 10, fontWeight: 800, color: '#c4b5fd' }}>
-              <span>CONCEPT MAPPING</span>
+            <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 11, fontWeight: 800, color: '#134E3F' }}>
+              <span>PEDAGOGICAL MASTERY</span>
               <span>{Math.round(((activeBulletIdx + 1) / Math.max(1, bullets.length)) * 100)}%</span>
             </div>
-            <div style={{ width: '100%', height: 6, borderRadius: 99, background: 'rgba(255,255,255,0.08)', overflow: 'hidden' }}>
+            <div style={{ width: '100%', height: 7, borderRadius: 99, background: '#E2ECE8', overflow: 'hidden' }}>
               <div
                 style={{
                   width: `${((activeBulletIdx + 1) / Math.max(1, bullets.length)) * 100}%`,
                   height: '100%',
-                  background: 'linear-gradient(90deg, #6366f1 0%, #38bdf8 100%)',
-                  boxShadow: '0 0 8px #38bdf8',
+                  background: 'linear-gradient(90deg, #134E3F 0%, #10B981 100%)',
+                  borderRadius: 99,
                   transition: 'width 0.2s ease',
                 }}
               />
@@ -413,7 +401,7 @@ export function ExplainerScene({
         </div>
       </div>
 
-      {/* Karaoke Subtitle Bar */}
+      {/* Synchronized Subtitle Bar */}
       <SubtitleBar subtitleWords={subtitleWords} totalFrames={totalFrames} />
     </div>
   );

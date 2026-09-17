@@ -7,14 +7,14 @@ import {
 } from "remotion";
 
 /**
- * IntroScene — Cinematic Opening & Title Presentation
+ * IntroScene — ShikshaSetu Vernacular Classroom Presentation
  * Features:
- * - Ambient cosmic nebula drift
- * - Glassmorphism card with glowing specular highlights
- * - Kinetic gradient typography
- * - Floating cyber embers and micro-grid
+ * - Warm sage-cream studio backdrop with subtle pedagogical micro-grid
+ * - Saffron orange "S" logo with Jharkhand FLN badge
+ * - Deep Forest Green title with Saffron accent divider
+ * - Native Ol Chiki and vernacular high-contrast typography
  */
-export const IntroScene = ({ text = "Welcome to CodeSeekho\nMaster Programming Naturally" }) => {
+export const IntroScene = ({ text = "ᱡᱚᱦᱟᱨ! ᱥᱮᱪᱮᱫ ᱥᱮᱛᱩ\nShikshaSetu FLN Masterclass" }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
@@ -24,16 +24,16 @@ export const IntroScene = ({ text = "Welcome to CodeSeekho\nMaster Programming N
     fps,
     config: { damping: 14, stiffness: 95, mass: 0.8 },
   });
-  const scale = interpolate(scaleProgress, [0, 1], [0.88, 1]);
+  const scale = interpolate(scaleProgress, [0, 1], [0.9, 1]);
   const opacity = interpolate(frame, [0, 16], [0, 1], { extrapolateRight: "clamp" });
-  const translateY = interpolate(frame, [0, 20], [28, 0], { extrapolateRight: "clamp" });
+  const translateY = interpolate(frame, [0, 20], [24, 0], { extrapolateRight: "clamp" });
 
   // Floating background ambient motion
-  const orbX = Math.sin(frame * 0.025) * 35;
-  const orbY = Math.cos(frame * 0.02) * 25;
+  const orbX = Math.sin(frame * 0.025) * 20;
+  const orbY = Math.cos(frame * 0.02) * 15;
 
   const lines = (text || "").split("\n");
-  const headline = lines[0] || "CodeSeekho AI";
+  const headline = lines[0] || "ShikshaSetu FLN";
   const bodyLines = lines.slice(1);
 
   return (
@@ -44,118 +44,127 @@ export const IntroScene = ({ text = "Welcome to CodeSeekho\nMaster Programming N
         justifyContent: "center",
         width: "100%",
         height: "100%",
-        backgroundColor: "#05030e",
+        backgroundColor: "#F4F7F5",
         backgroundImage: `
-          radial-gradient(circle at 20% 25%, rgba(124, 58, 237, 0.22) 0%, transparent 55%),
-          radial-gradient(circle at 80% 75%, rgba(6, 182, 212, 0.18) 0%, transparent 55%),
-          radial-gradient(circle at 50% 50%, rgba(236, 72, 153, 0.08) 0%, transparent 60%)
+          radial-gradient(circle at 15% 20%, rgba(19, 78, 63, 0.08) 0%, transparent 55%),
+          radial-gradient(circle at 85% 80%, rgba(234, 88, 12, 0.06) 0%, transparent 55%),
+          radial-gradient(circle at 50% 50%, rgba(22, 163, 74, 0.04) 0%, transparent 60%)
         `,
         position: "relative",
         overflow: "hidden",
         fontFamily: '"Noto Sans Ol Chiki", "Plus Jakarta Sans", "Inter", "Segoe UI", sans-serif',
       }}
     >
-      {/* Background Cyber Grid */}
+      {/* Background Pedagogical Graph Grid */}
       <div
         style={{
           position: "absolute",
           inset: 0,
           backgroundImage:
-            "linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px)",
-          backgroundSize: "46px 46px",
+            "linear-gradient(rgba(19, 78, 63, 0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(19, 78, 63, 0.04) 1px, transparent 1px)",
+          backgroundSize: "44px 44px",
           pointerEvents: "none",
         }}
       />
 
-      {/* Floating glowing orbs */}
+      {/* Floating soft sage ambient glow */}
       <div
         style={{
           position: "absolute",
-          width: 500,
-          height: 500,
+          width: 550,
+          height: 550,
           borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(124, 58, 237, 0.25) 0%, transparent 70%)",
+          background: "radial-gradient(circle, rgba(19, 78, 63, 0.07) 0%, transparent 70%)",
           top: -120 + orbY,
           right: -80 + orbX,
-          filter: "blur(35px)",
+          filter: "blur(40px)",
           pointerEvents: "none",
         }}
       />
 
-      {/* Main Glass Card */}
+      {/* Main ShikshaSetu Card */}
       <div
         style={{
-          maxWidth: 920,
+          maxWidth: 960,
           width: "86%",
           padding: "54px 64px",
-          background: "rgba(15, 12, 35, 0.72)",
-          border: "1.5px solid rgba(167, 139, 250, 0.4)",
+          background: "rgba(255, 255, 255, 0.95)",
+          border: "2px solid #D1E3DA",
           borderRadius: 28,
-          backdropFilter: "blur(20px)",
           boxShadow:
-            "0 24px 60px rgba(0, 0, 0, 0.6), 0 0 45px rgba(124, 58, 237, 0.22), inset 0 1px 1px rgba(255, 255, 255, 0.2)",
+            "0 24px 60px rgba(19, 78, 63, 0.08), 0 4px 16px rgba(19, 78, 63, 0.04), inset 0 1px 2px #FFFFFF",
           opacity,
           transform: `scale(${scale}) translateY(${translateY}px)`,
           zIndex: 10,
         }}
       >
-        {/* CodeSeekho Logo Pill */}
+        {/* ShikshaSetu Brand Badge */}
         <div
           style={{
             display: "inline-flex",
             alignItems: "center",
-            gap: 10,
-            padding: "6px 18px",
-            background: "linear-gradient(135deg, rgba(124, 58, 237, 0.3), rgba(79, 70, 229, 0.25))",
-            border: "1px solid rgba(167, 139, 250, 0.5)",
+            gap: 12,
+            padding: "8px 20px",
+            background: "#EBF4F0",
+            border: "1.5px solid #D1E3DA",
             borderRadius: 999,
-            color: "#c4b5fd",
-            fontSize: 13,
-            fontWeight: 800,
-            letterSpacing: "0.1em",
-            textTransform: "uppercase",
-            marginBottom: 26,
-            boxShadow: "0 0 16px rgba(124, 58, 237, 0.35)",
+            marginBottom: 24,
           }}
         >
+          {/* Saffron S Icon */}
+          <div
+            style={{
+              width: 26,
+              height: 26,
+              borderRadius: 8,
+              background: "linear-gradient(135deg, #F97316, #EA580C)",
+              color: "#FFFFFF",
+              fontSize: 14,
+              fontWeight: 800,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              boxShadow: "0 2px 6px rgba(234, 88, 12, 0.35)",
+            }}
+          >
+            S
+          </div>
           <span
             style={{
-              width: 8,
-              height: 8,
-              borderRadius: "50%",
-              background: "#38bdf8",
-              boxShadow: "0 0 8px #38bdf8",
+              color: "#134E3F",
+              fontSize: 13,
+              fontWeight: 800,
+              letterSpacing: "0.08em",
+              textTransform: "uppercase",
             }}
-          />
-          CodeSeekho AI Masterclass
+          >
+            ShikshaSetu FLN Studio · Govt. of Jharkhand
+          </span>
         </div>
 
         {/* Headline */}
         <h1
           style={{
-            margin: "0 0 20px 0",
-            fontSize: 50,
-            fontWeight: 900,
+            margin: "0 0 18px 0",
+            fontSize: 48,
+            fontWeight: 800,
             letterSpacing: "-0.02em",
-            lineHeight: 1.2,
-            background: "linear-gradient(135deg, #ffffff 0%, #f1f5f9 45%, #c4b5fd 100%)",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
-            textShadow: "0 0 35px rgba(167, 139, 250, 0.4)",
+            lineHeight: 1.25,
+            color: "#134E3F",
           }}
         >
           {headline}
         </h1>
 
-        {/* Dynamic Gradient Divider */}
+        {/* Dynamic Saffron Divider */}
         <div
           style={{
-            width: 80,
-            height: 4,
-            background: "linear-gradient(90deg, #38bdf8 0%, #a855f7 100%)",
+            width: 88,
+            height: 5,
+            background: "linear-gradient(90deg, #EA580C 0%, #F97316 100%)",
             borderRadius: 4,
-            marginBottom: 24,
-            boxShadow: "0 0 12px rgba(56, 189, 248, 0.7)",
+            marginBottom: 22,
+            boxShadow: "0 2px 8px rgba(234, 88, 12, 0.3)",
           }}
         />
 
@@ -165,10 +174,10 @@ export const IntroScene = ({ text = "Welcome to CodeSeekho\nMaster Programming N
             key={idx}
             style={{
               margin: "10px 0",
-              fontSize: 23,
-              color: "#e2e8f0",
+              fontSize: 22,
+              color: "#374151",
               lineHeight: 1.65,
-              fontWeight: 450,
+              fontWeight: 500,
             }}
           >
             {line}

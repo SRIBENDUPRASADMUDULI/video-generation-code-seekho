@@ -5,11 +5,12 @@ import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { SubtitleBar } from "./AvatarScene";
 
 /**
- * CodeScene — Interactive VS Code Studio with Live Memory State & Output Stream
+ * CodeScene — ShikshaSetu Interactive Code Studio with Variable Memory State
  * Features:
  * - Animated execution line pointer that steps down code lines
  * - Live Variable Memory Tracker dock (variable changes live on screen)
  * - Live terminal execution output console
+ * - Forest Green & Slate studio layout
  * - Native Ol Chiki & indigenous language font support
  */
 export const CodeScene = ({
@@ -30,7 +31,7 @@ export const CodeScene = ({
     config: { damping: 14, stiffness: 100, mass: 0.8 },
   });
   const opacity = interpolate(entrance, [0, 1], [0, 1]);
-  const translateY = interpolate(entrance, [0, 1], [22, 0]);
+  const translateY = interpolate(entrance, [0, 1], [20, 0]);
 
   // Clean code and line counting
   const cleanCode = (code || "").replace(/\\n/g, "\n");
@@ -57,10 +58,10 @@ export const CodeScene = ({
         justifyContent: "flex-start",
         width: "100%",
         height: "100%",
-        backgroundColor: "#030209",
+        backgroundColor: "#F4F7F5",
         backgroundImage: `
-          radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
-          radial-gradient(circle at 75% 75%, rgba(6, 182, 212, 0.12) 0%, transparent 50%)
+          radial-gradient(circle at 10% 20%, rgba(19, 78, 63, 0.08) 0%, transparent 50%),
+          radial-gradient(circle at 75% 75%, rgba(234, 88, 12, 0.05) 0%, transparent 50%)
         `,
         position: "relative",
         overflow: "hidden",
@@ -69,13 +70,13 @@ export const CodeScene = ({
         boxSizing: "border-box",
       }}
     >
-      {/* Background Cyber Grid */}
+      {/* Background Pedagogical Grid */}
       <div
         style={{
           position: "absolute",
           inset: 0,
           backgroundImage:
-            "linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px)",
+            "linear-gradient(rgba(19,78,63,0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(19,78,63,0.035) 1px, transparent 1px)",
           backgroundSize: "40px 40px",
           pointerEvents: "none",
         }}
@@ -93,36 +94,34 @@ export const CodeScene = ({
           transform: `translateY(${translateY}px)`,
         }}
       >
-        {/* Left: Code Editor Terminal Window */}
+        {/* Left: Code Editor Window */}
         <div
           style={{
             flex: 1.3,
-            background: "rgba(10, 13, 24, 0.9)",
-            backdropFilter: "blur(20px)",
-            border: "1.5px solid rgba(124, 58, 237, 0.4)",
-            borderRadius: 18,
-            boxShadow:
-              "0 20px 45px rgba(0, 0, 0, 0.6), 0 0 30px rgba(124, 58, 237, 0.2)",
+            background: "#0F172A",
+            borderRadius: 20,
+            boxShadow: "0 16px 40px rgba(19, 78, 63, 0.12)",
+            border: "2px solid #D1E3DA",
             overflow: "hidden",
             display: "flex",
             flexDirection: "column",
           }}
         >
-          {/* Top Window Bar */}
+          {/* Top Window Bar: Forest Green Header */}
           <div
             style={{
               display: "flex",
               alignItems: "center",
               justifyContent: "space-between",
-              padding: "10px 18px",
-              background: "linear-gradient(180deg, rgba(30, 27, 75, 0.6) 0%, rgba(15, 12, 41, 0.8) 100%)",
-              borderBottom: "1px solid rgba(139, 92, 246, 0.25)",
+              padding: "11px 18px",
+              background: "#134E3F",
+              borderBottom: "1px solid rgba(255, 255, 255, 0.1)",
             }}
           >
             <div style={{ display: "flex", gap: 7 }}>
-              <span style={{ width: 11, height: 11, borderRadius: "50%", background: "#ef4444" }} />
-              <span style={{ width: 11, height: 11, borderRadius: "50%", background: "#f59e0b" }} />
-              <span style={{ width: 11, height: 11, borderRadius: "50%", background: "#10b981" }} />
+              <span style={{ width: 11, height: 11, borderRadius: "50%", background: "#EF4444" }} />
+              <span style={{ width: 11, height: 11, borderRadius: "50%", background: "#F59E0B" }} />
+              <span style={{ width: 11, height: 11, borderRadius: "50%", background: "#10B981" }} />
             </div>
 
             <div
@@ -130,34 +129,33 @@ export const CodeScene = ({
                 display: "flex",
                 alignItems: "center",
                 gap: 8,
-                background: "rgba(124, 58, 237, 0.2)",
-                border: "1px solid rgba(167, 139, 250, 0.35)",
+                background: "rgba(255, 255, 255, 0.15)",
                 padding: "3px 12px",
                 borderRadius: 8,
                 fontSize: 12,
                 fontWeight: 700,
-                color: "#e0e7ff",
+                color: "#FFFFFF",
                 fontFamily: "monospace",
               }}
             >
-              <span>{language === "cpp" ? "⚡ main.cpp" : "🐍 main.py"}</span>
-              <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#22c55e", boxShadow: "0 0 6px #22c55e" }} />
+              <span>{language === "cpp" ? "⚡ lesson.cpp" : "🐍 lesson.py"}</span>
+              <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#34D399" }} />
             </div>
 
-            <span style={{ fontSize: 10, fontWeight: 800, color: "#c4b5fd", letterSpacing: 1.5 }}>
-              EXEC LINE {activeLineIdx + 1}/{lineCount}
+            <span style={{ fontSize: 10, fontWeight: 800, color: "#A7F3D0", letterSpacing: 1.2 }}>
+              LINE {activeLineIdx + 1}/{lineCount}
             </span>
           </div>
 
-          {/* Code Text with Line Highlighter */}
-          <div style={{ position: "relative", padding: "10px 14px" }}>
+          {/* Code Text with Syntax Highlighter */}
+          <div style={{ position: "relative", padding: "10px 14px", flex: 1, overflow: "hidden" }}>
             <SyntaxHighlighter
               language={language === "cpp" ? "cpp" : "python"}
               style={vscDarkPlus}
               showLineNumbers
               wrapLines
               lineNumberStyle={{
-                color: "rgba(148, 163, 184, 0.35)",
+                color: "rgba(148, 163, 184, 0.4)",
                 minWidth: "2.2em",
                 paddingRight: "0.8em",
                 fontSize: 14,
@@ -182,90 +180,192 @@ export const CodeScene = ({
               display: "flex",
               justifyContent: "space-between",
               padding: "7px 16px",
-              background: "#080614",
+              background: "#080F1D",
               borderTop: "1px solid rgba(255, 255, 255, 0.07)",
               fontSize: 10,
-              color: "#94a3b8",
+              color: "#94A3B8",
               fontFamily: "monospace",
             }}
           >
-            <span style={{ color: "#34d399" }}>▶ Running Interpreter</span>
-            <span>UTF-8 • Spaces: 4</span>
+            <span style={{ color: "#34D399" }}>▶ ShikshaSetu Live Runner</span>
+            <span>UTF-8 • Ol Chiki Native</span>
           </div>
         </div>
 
-        {/* Right: Animated Memory State & Live Console Stream */}
+        {/* Right: Variable Memory State & Output Console */}
         <div
           style={{
             flex: 0.9,
             display: "flex",
             flexDirection: "column",
-            gap: 12,
+            gap: 14,
           }}
         >
-          {/* Live Variable Watcher Card */}
+          {/* Live Variable Memory Inspector */}
           <div
             style={{
-              background: "rgba(15, 12, 35, 0.85)",
-              backdropFilter: "blur(16px)",
-              border: "1.5px solid rgba(56, 189, 248, 0.35)",
+              background: "#FFFFFF",
+              border: "1.5px solid #D1E3DA",
               borderRadius: 16,
               padding: "14px 16px",
-              boxShadow: "0 10px 25px rgba(0,0,0,0.4)",
+              boxShadow: "0 8px 24px rgba(19, 78, 63, 0.06)",
             }}
           >
-            <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 10, fontSize: 11, fontWeight: 800, color: "#38bdf8", letterSpacing: 1 }}>
-              <span>🧠</span>
-              <span>MEMORY STATE TRACKER</span>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                marginBottom: 10,
+              }}
+            >
+              <span
+                style={{
+                  fontSize: 11,
+                  fontWeight: 800,
+                  letterSpacing: 1.2,
+                  color: "#134E3F",
+                  textTransform: "uppercase",
+                }}
+              >
+                🧠 VARIABLE MEMORY STATE
+              </span>
+              <span
+                style={{
+                  fontSize: 10,
+                  padding: "2px 8px",
+                  borderRadius: 99,
+                  background: "#DCFCE7",
+                  color: "#15803D",
+                  fontWeight: 800,
+                }}
+              >
+                LIVE WATCH
+              </span>
             </div>
 
-            <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-              <div style={{ display: "flex", justifyContent: "space-between", background: "rgba(255,255,255,0.04)", padding: "6px 10px", borderRadius: 8, fontFamily: "monospace", fontSize: 12 }}>
-                <span style={{ color: "#a5b4fc" }}>step_index:</span>
-                <span style={{ color: "#38bdf8", fontWeight: 800 }}>{simIteration}</span>
+            {/* Variable Slots */}
+            <div style={{ display: "flex", flexDirection: "column", gap: 7 }}>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  padding: "6px 12px",
+                  background: "#F8FAF9",
+                  borderRadius: 8,
+                  border: "1px solid #E2ECE8",
+                  fontSize: 13,
+                  fontFamily: "monospace",
+                }}
+              >
+                <span style={{ color: "#134E3F", fontWeight: 700 }}>iterator [i]</span>
+                <span style={{ color: "#EA580C", fontWeight: 800 }}>{simIteration}</span>
               </div>
-              <div style={{ display: "flex", justifyContent: "space-between", background: "rgba(255,255,255,0.04)", padding: "6px 10px", borderRadius: 8, fontFamily: "monospace", fontSize: 12 }}>
-                <span style={{ color: "#a5b4fc" }}>memory_addr:</span>
-                <span style={{ color: "#34d399", fontWeight: 800 }}>0x7FFEE3</span>
+
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  padding: "6px 12px",
+                  background: "#F8FAF9",
+                  borderRadius: 8,
+                  border: "1px solid #E2ECE8",
+                  fontSize: 13,
+                  fontFamily: "monospace",
+                }}
+              >
+                <span style={{ color: "#134E3F", fontWeight: 700 }}>active_line</span>
+                <span style={{ color: "#10B981", fontWeight: 800 }}>{activeLineIdx + 1}</span>
               </div>
-              <div style={{ display: "flex", justifyContent: "space-between", background: "rgba(255,255,255,0.04)", padding: "6px 10px", borderRadius: 8, fontFamily: "monospace", fontSize: 12 }}>
-                <span style={{ color: "#a5b4fc" }}>cpu_cycles:</span>
-                <span style={{ color: "#fbbf24", fontWeight: 800 }}>{frame * 12} ops</span>
+
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  padding: "6px 12px",
+                  background: "#F8FAF9",
+                  borderRadius: 8,
+                  border: "1px solid #E2ECE8",
+                  fontSize: 13,
+                  fontFamily: "monospace",
+                }}
+              >
+                <span style={{ color: "#134E3F", fontWeight: 700 }}>status</span>
+                <span style={{ color: "#0284C7", fontWeight: 800 }}>OPTIMAL</span>
               </div>
             </div>
           </div>
 
-          {/* Live Output Console */}
+          {/* Execution Output Console */}
           <div
             style={{
-              background: "#080614",
-              border: "1.5px solid rgba(16, 185, 129, 0.35)",
+              flex: 1,
+              background: "#080F1D",
+              border: "1.5px solid #134E3F",
               borderRadius: 16,
               padding: "14px 16px",
-              flex: 1,
+              boxShadow: "0 8px 24px rgba(19, 78, 63, 0.08)",
               display: "flex",
               flexDirection: "column",
-              boxShadow: "0 10px 25px rgba(0,0,0,0.4)",
             }}
           >
-            <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 8, fontSize: 11, fontWeight: 800, color: "#34d399", letterSpacing: 1 }}>
-              <span>💻</span>
-              <span>TERMINAL STDOUT</span>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                marginBottom: 10,
+                borderBottom: "1px solid rgba(255, 255, 255, 0.08)",
+                paddingBottom: 6,
+              }}
+            >
+              <span
+                style={{
+                  fontSize: 11,
+                  fontWeight: 800,
+                  letterSpacing: 1.2,
+                  color: "#34D399",
+                  textTransform: "uppercase",
+                }}
+              >
+                TERMINAL OUTPUT
+              </span>
+              <span style={{ fontSize: 10, color: "#64748B" }}>bash</span>
             </div>
 
-            <div style={{ fontFamily: "monospace", fontSize: 12, color: "#cbd5e1", lineHeight: 1.5, flex: 1 }}>
-              <div style={{ color: "#64748b" }}>$ python main.py</div>
-              <div style={{ color: "#38bdf8" }}>[Program started...]</div>
-              {simIteration >= 1 && <div style={{ color: "#86efac" }}>&gt; Output: step 1 processed</div>}
-              {simIteration >= 2 && <div style={{ color: "#86efac" }}>&gt; Output: step 2 processed</div>}
-              {simIteration >= 3 && <div style={{ color: "#86efac" }}>&gt; Loop completed successfully ✓</div>}
-              <span style={{ display: cursorBlink ? "inline-block" : "none", color: "#34d399", fontWeight: 900 }}>▌</span>
+            <div
+              style={{
+                fontFamily: "'JetBrains Mono', monospace",
+                fontSize: 13,
+                color: "#E2E8F0",
+                lineHeight: 1.6,
+              }}
+            >
+              <div style={{ color: "#64748B" }}>$ python3 lesson.py</div>
+              {Array.from({ length: Math.min(activeLineIdx + 1, 3) }).map((_, idx) => (
+                <div key={idx} style={{ color: "#34D399" }}>
+                  &gt; [OK] Iteration {idx}: Step completed successfully
+                </div>
+              ))}
+              <div style={{ display: "flex", alignItems: "center", gap: 4, color: "#EA580C" }}>
+                <span>&gt; processing</span>
+                {cursorBlink && (
+                  <span
+                    style={{
+                      display: "inline-block",
+                      width: 7,
+                      height: 14,
+                      background: "#EA580C",
+                    }}
+                  />
+                )}
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Karaoke Subtitle Bar */}
+      {/* Synchronized Subtitle Bar */}
       <SubtitleBar subtitleWords={subtitleWords} totalFrames={totalFrames} />
     </div>
   );

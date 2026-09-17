@@ -3,26 +3,30 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>CodeSeekho — Study Tools</title>
+<title>ShikshaSetu v2.0 — FLN Study Tools</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Ol+Chiki:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #0a0a0f; --card: #12121a; --border: rgba(255,255,255,0.07);
-    --purple: #7c3aed; --blue: #2563eb; --green: #10b981; --orange: #f59e0b;
-    --text: #f1f5f9; --muted: #6b7280;
+    --bg: #F4F7F5; --card: #FFFFFF; --border: #E2ECE8;
+    --purple: #134E3F; --blue: #0284C7; --green: #15803D; --orange: #EA580C;
+    --text: #111827; --muted: #6B7280;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', sans-serif; min-height: 100vh; }
+  body { background: var(--bg); color: var(--text); font-family: 'Plus Jakarta Sans', 'Noto Sans Ol Chiki', 'Segoe UI', sans-serif; min-height: 100vh; }
   
   /* Header */
-  .header { background: linear-gradient(135deg, #0f0f1a 0%, #1a0a2e 100%); border-bottom: 1px solid var(--border); padding: 16px 32px; display: flex; align-items: center; gap: 16px; }
-  .logo { font-size: 22px; font-weight: 800; background: linear-gradient(90deg, #7c3aed, #06b6d4); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-  .badge { font-size: 11px; background: rgba(124,58,237,0.2); border: 1px solid rgba(124,58,237,0.4); color: #a78bfa; padding: 2px 8px; border-radius: 99px; }
+  .header { background: #FFFFFF; border-bottom: 1px solid var(--border); padding: 16px 32px; display: flex; align-items: center; gap: 16px; box-shadow: 0 2px 8px rgba(19, 78, 63, 0.04); }
+  .brand-icon { width: 36px; height: 36px; background: linear-gradient(135deg, #F97316 0%, #EA580C 100%); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 18px; font-weight: 800; }
+  .logo { font-size: 20px; font-weight: 800; color: #111827; }
+  .badge { font-size: 11px; background: #FFF7ED; border: 1px solid rgba(234,88,12,0.25); color: #EA580C; padding: 2px 8px; border-radius: 99px; font-weight: 700; }
 
   /* Tabs */
-  .tabs { display: flex; gap: 4px; padding: 20px 32px 0; border-bottom: 1px solid var(--border); }
-  .tab { padding: 10px 20px; border-radius: 8px 8px 0 0; border: none; background: none; color: var(--muted); cursor: pointer; font-size: 14px; font-weight: 500; transition: all 0.2s; border-bottom: 2px solid transparent; }
+  .tabs { display: flex; gap: 6px; padding: 18px 32px 0; border-bottom: 1px solid var(--border); background: #FFFFFF; }
+  .tab { padding: 10px 20px; border-radius: 10px 10px 0 0; border: none; background: none; color: var(--muted); cursor: pointer; font-size: 14px; font-weight: 600; font-family: inherit; transition: all 0.2s; border-bottom: 3px solid transparent; }
   .tab:hover { color: var(--text); }
-  .tab.active { color: var(--text); border-bottom-color: var(--purple); background: rgba(124,58,237,0.06); }
+  .tab.active { color: var(--purple); border-bottom-color: var(--purple); background: #EBF4F0; }
   .tab-icon { margin-right: 6px; }
 
   /* Panels */
@@ -133,11 +137,12 @@
 <body>
 
 <div class="header">
-  <div class="logo">CodeSeekho</div>
-  <div class="badge">Study Tools Suite</div>
+  <div class="brand-icon">S</div>
+  <div class="logo">ShikshaSetu</div>
+  <div class="badge">FLN Study Suite</div>
   <div style="margin-left:auto;display:flex;align-items:center;gap:14px;">
-    <a href="/" style="padding:6px 14px;background:rgba(124,58,237,0.25);border:1px solid rgba(124,58,237,0.5);color:#c4b5fd;border-radius:10px;text-decoration:none;font-size:12px;font-weight:700;display:flex;align-items:center;gap:6px;transition:0.2s;">🎬 Back to Video Engine</a>
-    <div style="font-size:12px;color:var(--muted);">Unified Suite</div>
+    <a href="/" style="padding:8px 16px;background:#134E3F;color:#FFFFFF;border-radius:999px;text-decoration:none;font-size:12.5px;font-weight:700;display:flex;align-items:center;gap:6px;transition:0.2s;box-shadow:0 2px 8px rgba(19,78,63,0.25);">🎬 Back to Video Studio</a>
+    <div style="font-size:12px;color:var(--muted);font-weight:600;">Govt. of Jharkhand</div>
   </div>
 </div>
 

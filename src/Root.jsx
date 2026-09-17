@@ -59,18 +59,60 @@ export const V3VideoEngine = ({ script, audioFiles, avatarEngine }) => {
         const isIntroOrSummary = scene.type === 'intro' || (index === script.scenes.length - 1 && scene.type !== 'code');
 
         const renderInnerScene = () => {
+          const watermark = (
+            <div style={{
+              position: 'absolute',
+              top: 24,
+              left: 32,
+              display: 'flex',
+              alignItems: 'center',
+              gap: 8,
+              padding: '6px 14px',
+              background: 'rgba(255, 255, 255, 0.94)',
+              border: '1.5px solid #D1E3DA',
+              borderRadius: 999,
+              boxShadow: '0 4px 14px rgba(19, 78, 63, 0.08)',
+              zIndex: 75,
+              backdropFilter: 'blur(8px)',
+            }}>
+              <div style={{
+                width: 20,
+                height: 20,
+                borderRadius: 6,
+                background: 'linear-gradient(135deg, #F97316, #EA580C)',
+                color: '#fff',
+                fontSize: 11,
+                fontWeight: 800,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}>S</div>
+              <span style={{
+                fontSize: 11,
+                fontWeight: 800,
+                color: '#134E3F',
+                letterSpacing: 1,
+                textTransform: 'uppercase',
+                fontFamily: '"Plus Jakarta Sans", sans-serif',
+              }}>ShikshaSetu FLN</span>
+            </div>
+          );
+
           if (isIntroOrSummary) {
             return (
-              <AvatarScene
-                scene={{
-                  ...scene,
-                  audioDuration: durationSec,
-                  subtitleWords: audioData?.subtitleWords ?? [],
-                  avatarVideoPath: audioData?.avatarVideoPath,
-                }}
-                sceneIndex={index}
-                sceneDurationFrames={sceneDurationFrames}
-              />
+              <>
+                {watermark}
+                <AvatarScene
+                  scene={{
+                    ...scene,
+                    audioDuration: durationSec,
+                    subtitleWords: audioData?.subtitleWords ?? [],
+                    avatarVideoPath: audioData?.avatarVideoPath,
+                  }}
+                  sceneIndex={index}
+                  sceneDurationFrames={sceneDurationFrames}
+                />
+              </>
             );
           }
 
@@ -78,6 +120,7 @@ export const V3VideoEngine = ({ script, audioFiles, avatarEngine }) => {
             case 'code':
               return (
                 <>
+                  {watermark}
                   <CodeScene
                     code={scene.code}
                     language={script.language}
@@ -96,6 +139,7 @@ export const V3VideoEngine = ({ script, audioFiles, avatarEngine }) => {
             case 'visual':
               return (
                 <>
+                  {watermark}
                   <VisualScene
                     animation={scene.animation}
                     audioDuration={durationSec}
@@ -113,6 +157,7 @@ export const V3VideoEngine = ({ script, audioFiles, avatarEngine }) => {
             case 'explainer':
               return (
                 <>
+                  {watermark}
                   <ExplainerScene
                     heading={scene.heading}
                     bullets={scene.bullets}
@@ -132,6 +177,7 @@ export const V3VideoEngine = ({ script, audioFiles, avatarEngine }) => {
             case 'comparison':
               return (
                 <>
+                  {watermark}
                   <ComparisonScene
                     leftTitle={scene.leftTitle}
                     leftPoints={scene.leftPoints}
@@ -152,6 +198,7 @@ export const V3VideoEngine = ({ script, audioFiles, avatarEngine }) => {
             case 'flowchart':
               return (
                 <>
+                  {watermark}
                   <FlowchartScene
                     steps={scene.steps}
                     colors={scene.colors}
@@ -170,6 +217,7 @@ export const V3VideoEngine = ({ script, audioFiles, avatarEngine }) => {
             default:
               return (
                 <>
+                  {watermark}
                   <IntroScene text={scene.text || JSON.stringify(scene)} />
                   <PipTeacherCam
                     audioDuration={durationSec}
@@ -202,8 +250,8 @@ export const V3VideoEngine = ({ script, audioFiles, avatarEngine }) => {
 
 const mockProps = {
   script: {
-    title: 'Python Mastery — Loops and Conditions',
-    language: 'Python',
+    title: 'ShikshaSetu FLN — ᱥᱟᱱᱛᱟᱲᱤ ᱥᱮᱪᱮᱫ (Vernacular Pedagogy)',
+    language: 'Santhali',
     scenes: [
       {
         type: 'intro',
