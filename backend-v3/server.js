@@ -889,8 +889,10 @@ async function runPipeline(jobId, rawText, targetLanguage = 'English') {
 
     emitProgress(jobId, 60, 'render', `Rendering ${script.scenes.length} scenes via Remotion...`);
     const propsArg  = jobScriptPath.replace(/\\/g, '/');
-    const outputArg = outputVideoPath.replace(/\\/g, '/');
-    const renderCmd = `npx remotion render src/Root.jsx CodeSeekho-Avatar "${outputArg}" --props="${propsArg}" --log=verbose`;
+    const remotionBin = process.platform === 'win32'
+      ? `"${path.join(REMOTION_ROOT, 'node_modules', '.bin', 'remotion.cmd')}"`
+      : 'npx remotion';
+    const renderCmd = `${remotionBin} render src/Root.jsx CodeSeekho-Avatar "${outputArg}" --props="${propsArg}" --log=verbose`;
     console.log(`   ${renderCmd}`);
 
     // Stream render progress by parsing Remotion output
