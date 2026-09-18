@@ -1,6 +1,6 @@
 import React from 'react';
 import { useCurrentFrame, useVideoConfig, spring, interpolate, Video, staticFile } from 'remotion';
-import { IndianAvatarFace } from '../scenes/AvatarScene';
+import { ShikshaSetuAvatar } from './ShikshaSetuAvatar';
 
 /**
  * PipTeacherCam — ShikshaSetu Picture-in-Picture Teacher Camera
@@ -148,12 +148,14 @@ export function PipTeacherCam({
               style={{ width: '100%', height: '100%', objectFit: 'cover' }}
             />
           ) : (
-            <div style={{ transform: 'scale(0.72) translateY(-14px)' }}>
-              <IndianAvatarFace
+            <div style={{ transform: 'scale(0.8) translateY(-6px)' }}>
+              <ShikshaSetuAvatar
                 speaking={isSpeaking}
                 isSpeakingWord={isSpeakingWord}
-                width={190}
-                height={215}
+                width={150}
+                height={175}
+                showNatureAura={true}
+                showEqualizer={false}
               />
             </div>
           )}

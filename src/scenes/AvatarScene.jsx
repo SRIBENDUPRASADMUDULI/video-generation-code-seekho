@@ -1,4 +1,5 @@
 import { useCurrentFrame, useVideoConfig, interpolate, spring, Video, staticFile } from 'remotion';
+import { ShikshaSetuAvatar, FlutteringButterfly } from '../components/ShikshaSetuAvatar';
 
 // =============================================================================
 // SubtitleBar -- Word-level synchronized subtitles (ShikshaSetu Spec)
@@ -277,53 +278,60 @@ export function AvatarScene({ scene, sceneIndex, sceneDurationFrames }) {
 
   const hasVideoAvatar = !!scene?.avatarVideoPath;
 
+  // Ken Burns subtle camera motion for serene nature background
+  const bgScale = 1.03 + Math.sin(frame * 0.015) * 0.02;
+  const bgPanX = Math.cos(frame * 0.012) * 12;
+  const bgPanY = Math.sin(frame * 0.018) * 8;
+
   return (
     <div style={{
       width: '100%', height: '100%',
       backgroundColor: '#F4F7F5',
-      backgroundImage: `
-        radial-gradient(ellipse at 50% 25%, rgba(19, 78, 63, 0.08) 0%, transparent 65%),
-        radial-gradient(ellipse at 80% 80%, rgba(234, 88, 12, 0.05) 0%, transparent 65%)
-      `,
       display: 'flex', flexDirection: 'column',
       alignItems: 'center', justifyContent: 'center',
       fontFamily: '"Noto Sans Ol Chiki", "Plus Jakarta Sans", "Segoe UI", Arial, sans-serif',
       position: 'relative', overflow: 'hidden',
       opacity,
     }}>
+      {/* ── Botanical Nature Background (ShikshaSetu UI Aesthetic) ── */}
+      <div style={{
+        position: 'absolute', inset: -20,
+        backgroundImage: `url(${staticFile('shikshasetu_nature_bg.jpg')})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        transform: `scale(${bgScale}) translate(${bgPanX}px, ${bgPanY}px)`,
+        filter: 'brightness(1.02) saturate(1.08)',
+        zIndex: 1,
+      }} />
 
-      {/* Pedagogical micro-grid overlay */}
+      {/* Gentle Frosted Glass Sheen for high pedagogical readability */}
       <div style={{
         position: 'absolute', inset: 0,
-        backgroundImage: 'linear-gradient(rgba(19,78,63,0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(19,78,63,0.035) 1px, transparent 1px)',
-        backgroundSize: '48px 48px',
+        background: 'radial-gradient(ellipse at 50% 50%, rgba(244, 247, 245, 0.42) 0%, rgba(235, 243, 238, 0.65) 100%)',
+        backdropFilter: 'blur(3px)',
+        zIndex: 2,
       }} />
 
-      {/* Floating particles */}
-      <FlnParticles frame={frame} />
-
-      {/* Soft center pulse */}
-      <div style={{
-        position: 'absolute',
-        width: 480, height: 480, borderRadius: '50%',
-        background: 'radial-gradient(circle, rgba(19, 78, 63, 0.06) 0%, transparent 75%)',
-        transform: `scale(${1 + Math.sin(frame * 0.04) * 0.06})`,
-        filter: 'blur(30px)',
-      }} />
+      {/* ── Animated Saffron & Monarch Butterflies ── */}
+      <FlutteringButterfly startX={6} startY={14} size={36} speed={1.1} color="#F97316" />
+      <FlutteringButterfly startX={5} startY={74} size={32} speed={0.9} color="#FB923C" flip />
+      <FlutteringButterfly startX={82} startY={15} size={40} speed={1.2} color="#F97316" />
+      <FlutteringButterfly startX={91} startY={68} size={34} speed={0.85} color="#FB923C" flip />
+      <FlutteringButterfly startX={48} startY={6} size={28} speed={1.3} color="#F97316" />
 
       {/* Main content row */}
       <div style={{
         display: 'flex', alignItems: 'center', justifyContent: 'center',
-        gap: 52, width: '92%', maxWidth: 1200,
+        gap: 52, width: '92%', maxWidth: 1240,
         transform: `translateY(${slideUp}px)`,
         zIndex: 10,
       }}>
 
         {/* Avatar column */}
-        <div style={{ flexShrink: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 12 }}>
+        <div style={{ flexShrink: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 10 }}>
           {hasVideoAvatar ? (
             <div style={{
-              width: 230, height: 270, borderRadius: 24, overflow: 'hidden',
+              width: 250, height: 290, borderRadius: 24, overflow: 'hidden',
               border: '2.5px solid #134E3F',
               boxShadow: '0 12px 36px rgba(19, 78, 63, 0.25)',
               position: 'relative', background: '#FFFFFF',
@@ -340,31 +348,25 @@ export function AvatarScene({ scene, sceneIndex, sceneDurationFrames }) {
               }}>AI PRESENTER</div>
             </div>
           ) : (
-            <IndianAvatarFace speaking={speaking} isSpeakingWord={isSpeakingWord} />
+            <ShikshaSetuAvatar
+              speaking={speaking}
+              isSpeakingWord={isSpeakingWord}
+              width={290}
+              height={340}
+              showNatureAura={true}
+              showEqualizer={true}
+            />
           )}
 
           {/* ShikshaSetu Teacher badge */}
           <div style={{
-            fontSize: 11, color: '#134E3F', letterSpacing: 2, fontWeight: 800,
-            background: '#EBF4F0',
-            border: '1.5px solid #D1E3DA',
-            borderRadius: 999, padding: '5px 16px',
-            boxShadow: '0 2px 8px rgba(19, 78, 63, 0.08)',
-          }}>SHIKSHASETU VERNACULAR EDUCATOR</div>
-
-          {/* Dynamic Audio Equalizer Bars */}
-          {speaking && (
-            <div style={{ display: 'flex', gap: 3.5, alignItems: 'center', marginTop: 2 }}>
-              {[1.1, 1.8, 0.9, 1.6, 1.2, 1.7, 0.8, 1.4].map((h, i) => (
-                <div key={i} style={{
-                  width: 3.5,
-                  height: 6 + Math.abs(Math.sin(frame * 0.32 + i * 0.5)) * 18 * h,
-                  background: `linear-gradient(180deg, #10B981, #134E3F)`,
-                  borderRadius: 2,
-                }} />
-              ))}
-            </div>
-          )}
+            fontSize: 11, color: '#134E3F', letterSpacing: 1.8, fontWeight: 800,
+            background: 'rgba(255, 255, 255, 0.94)',
+            border: '1.5px solid #86BFA0',
+            borderRadius: 999, padding: '5px 18px',
+            boxShadow: '0 4px 14px rgba(19, 78, 63, 0.1)',
+            backdropFilter: 'blur(10px)',
+          }}>SHIKSHASETU FLN EDUCATOR</div>
         </div>
 
         {/* Speech Card + Typography */}
